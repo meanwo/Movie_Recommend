@@ -1,5 +1,5 @@
-[
-    {
+[   
+    {   
         "pk": 505642,
         "model": "movies.movie",
         "fields": {

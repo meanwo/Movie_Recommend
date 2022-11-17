@@ -12,4 +12,3 @@ class Movie(models.Model):
     overview = models.TextField()
     poster_path = models.TextField()
     genres = models.ManyToManyField(Genre, related_name='movies')
-

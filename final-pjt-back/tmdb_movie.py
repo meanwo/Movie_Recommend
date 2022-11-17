@@ -4,8 +4,7 @@ from pprint import pprint
 
 TMDB_API_KEY = 'd43c34da8b6513938295a31cd66258b2'
 
-
-def get_movie_datas():
+def get_movie_datas2():
     total_data = []
 
     # 1페이지부터 500페이지까지 (페이지당 20개, 총 10,000개)
@@ -44,6 +43,7 @@ def get_movie_datas():
         json.dump(total_data, w, indent=4, ensure_ascii=False)
 
 get_movie_datas()
+
 
 
 def get_genre_datas():
