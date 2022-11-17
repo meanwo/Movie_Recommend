@@ -6,6 +6,8 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
+const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
+// const API_KEY = process.env.API_KEY
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -16,7 +18,9 @@ export default new Vuex.Store({
   ],
   state: {
     articles: [],
+    movieCards: [],
     token: null,
+    num: 1,
   },
   getters: {
     isLogin(state) {
@@ -24,6 +28,15 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    // CHANGE_PAGES: function (state, num) {
+      
+
+    // },
+
+    LOAD_MOVIE_CARDS: function(state, results) {
+      state.movieCards = results
+    },
+  
     GET_ARTICLES(state, articles) {
       state.articles = articles
     },
@@ -38,6 +51,40 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    // ChangePage: function(context, num) {
+    //   axios({
+    //     method: 'get',
+    //     url: `${API_URL}/api/v1/articles/`,       
+    //   })
+    //   .then((res) => {
+    //     context.commit('CHANGE_PAGES', num)
+    //   })
+    //   .catch((err) => {
+    //     console.log(err)
+    //   })
+    // },
+    loadMovieCards: function (context, num) {
+      axios({
+        method: 'get',
+        // url: `https://api.themoviedb.org/3/movie/popular`,
+        url: `${API_URL}/api/v2/movies/`,
+        params: {
+          api_key: API_KEY,
+          language: 'ko-KR',
+          page: num,
+        }
+      })
+      .then((response) => {
+        console.log(response.data.slice((num-1)*10,(num-1)*10+10))
+        context.commit('LOAD_MOVIE_CARDS', response.data.slice((num-1)*10,(num-1)*10+10))
+        // context.commit('LOAD_MOVIE_CARDS', response.data.results)
+      })
+      .catch((error) => {
+        console.log(API_KEY)
+        console.log(error)
+      })
+      
+    },
     getArticles(context) {
       axios({
         method: 'get',
