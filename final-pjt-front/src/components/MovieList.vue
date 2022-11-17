@@ -6,8 +6,8 @@
       <!-- <img :src="base_url+movieCard.poster_path" alt="영화이미지"> -->
       <!-- <h5 class="card-title font-weight-bold: 700">{{ movieCard.original_title }}</h5> -->
       <h4 class="card-title font-weight-bold: 700">{{ movieCard.title }}</h4>
-      <!-- {{ movieCard.id }}
-      {{ movieCard }} -->
+      <!-- {{ movieCard.id }} -->
+      {{ movieCard }}
 
     </div>
   </template>
