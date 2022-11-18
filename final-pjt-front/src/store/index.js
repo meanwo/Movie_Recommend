@@ -6,7 +6,9 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
-const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
+// const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
+const API_KEY = process.env.VUE_APP_API_KEY
+
 // const API_KEY = process.env.API_KEY
 
 const API_URL = 'http://127.0.0.1:8000'

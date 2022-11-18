@@ -1,9 +1,10 @@
 <template>
   <div>
     <h1>Detail</h1>
-    <!-- <div v-if="video">
-      <iframe :src="trailerUrl" frameborder="0"></iframe>
-    </div> -->
+    <div class="">
+      <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+      </div>
+  
   <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9">
     <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
   </div>
@@ -11,7 +12,7 @@
     <h2>트레일러가 없습니다!</h2>
   </div>
   
-  
+  <p>{{ movieCard.poster_path }}</p>
   <p>영화 제목 : {{ movieCard?.title }}</p>
   <p>줄거리 : {{ movieCard?.overview }}</p>
   <p>개봉일 : {{ movieCard?.released_date }}</p>
@@ -22,6 +23,7 @@
     <p>내용 : {{ article?.content }}</p>
     <p>작성시간 : {{ article?.created_at }}</p>
     <p>수정시간 : {{ article?.updated_at }}</p> -->
+    
   </div>
 </template>
 
@@ -29,13 +31,16 @@
 import axios from 'axios'
 
 const API_URL = 'http://127.0.0.1:8000'
-const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
+// const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
+const API_KEY = process.env.VUE_APP_API_KEY
 export default {
   name: 'MovieDetailView',
   data() {
+    const base_url = 'https://image.tmdb.org/t/p/original/'
     return {
       movieCard: null,
       trailer: null,
+      base_url
       
     }
   },
@@ -85,3 +90,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+.background-img {
+  float: left;
+  margin: 0 auto;
+  opacity: 10;
+}
+
+</style>
