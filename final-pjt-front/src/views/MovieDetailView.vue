@@ -4,8 +4,8 @@
     <!-- <div v-if="video">
       <iframe :src="trailerUrl" frameborder="0"></iframe>
     </div> -->
-  <div v-if="trailer.results">
-    <iframe :src="videoURI" frameborder="0"></iframe>
+  <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9">
+    <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
   </div>
   <div v-else>
     <h2>트레일러가 없습니다!</h2>
@@ -29,7 +29,7 @@
 import axios from 'axios'
 
 const API_URL = 'http://127.0.0.1:8000'
-const API_KEY = process.env.VUE_APP_API_KEY
+const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
 export default {
   name: 'MovieDetailView',
   data() {
@@ -41,7 +41,7 @@ export default {
   },
   created() {
     this.getMovieDetail()
-    console.log(process.env.VUE_APP_API_KEY)
+    // console.log(process.env.VUE_APP_API_KEY)
   },
   computed: {
     videoURI () {

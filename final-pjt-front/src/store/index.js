@@ -75,12 +75,12 @@ export default new Vuex.Store({
         }
       })
       .then((response) => {
-        console.log(response.data.slice((num-1)*10,(num-1)*10+10))
+        // console.log(response.data.slice((num-1)*10,(num-1)*10+10))
         context.commit('LOAD_MOVIE_CARDS', response.data.slice((num-1)*10,(num-1)*10+10))
         // context.commit('LOAD_MOVIE_CARDS', response.data.results)
       })
       .catch((error) => {
-        console.log(API_KEY)
+        // console.log(API_KEY)
         console.log(error)
       })
       
