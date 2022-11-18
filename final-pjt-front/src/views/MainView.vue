@@ -65,19 +65,14 @@
               this.$store.dispatch('loadMovieCards', num)
           },
            BackPage() {
-            if (this.n7+ 7 < 500) {
               this.n1 += 7, this.n2 += 7, this.n3 += 7, this.n4 += 7
               this.n5 += 7, this.n6 += 7, this.n7 += 7
               this.$store.dispatch('loadMovieCards', this.n1)
-            }
-            console.log(this.n1, this.n7)
           },
           FrontPage() {
-            if (this.n1-7 > 0) {
               this.n1 -= 7, this.n2 -= 7, this.n3 -= 7, this.n4 -= 7
               this.n5 -= 7, this.n6 -= 7, this.n7 -= 7
               this.$store.dispatch('loadMovieCards', this.n7)
-            }
           },
           FirstPage () {
               this.n1 = 1, this.n2 = 2, this.n3 = 3, this.n4 = 4
@@ -85,9 +80,9 @@
               this.$store.dispatch('loadMovieCards', this.n1)
           },
           EndPage () {
-              this.n1 = 494, this.n2 = 495, this.n3 = 496, this.n4 = 497
-              this.n5 = 498, this.n6 = 499, this.n7 = 500
-              this.$store.dispatch('loadMovieCards', 500)
+              this.n1 = 35911, this.n2 = 35912, this.n3 = 35913, this.n4 = 35914
+              this.n5 = 35915, this.n6 = 35916, this.n7 = 35917
+              this.$store.dispatch('loadMovieCards', 5000)
           }
           
       }
