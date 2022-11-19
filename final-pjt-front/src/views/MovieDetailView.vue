@@ -1,18 +1,24 @@
 <template>
-  <div>
-    <h1>Detail</h1>
-      <div class="front">
-        <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+ 
+    <div class="front p-3 mb-2 bg-dark">
+    <h1 class="text-light p-3">{{ movieCard.title}}</h1>
+    <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+ 
             
-      
+  <!-- TMDB API일 때 -->
+  <!-- <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9"> -->
+
+  <!-- 유튜브 API일 때 -->
+  <!-- <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe> -->
   
-  <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9">
-    <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
+  <div v-if="trailer" class="embed-responsive embed-responsive-21by9">
+    <iframe class="embed-responsive-item detail-fade-in" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
   </div>
   <div v-else>
     <h2>트레일러가 없습니다!</h2>
   </div>
   
+  <div class="detail-fade-in text-light p-3">
   <p>{{ movieCard?.poster_path }}</p>
   <p>영화 제목 : {{ movieCard?.title }}</p>
   <p>줄거리 : {{ movieCard?.overview }}</p>
@@ -21,13 +27,15 @@
     {{ movieCard?.id }}
     <br>
   <button @click="ChangePage">back</button>
+  </div>
 
      <!-- <p>제목 : {{ article?.title }}</p> 
     <p>내용 : {{ article?.content }}</p>
     <p>작성시간 : {{ article?.created_at }}</p>
     <p>수정시간 : {{ article?.updated_at }}</p> -->
    </div> 
-  </div>
+
+
 </template>
 
 <script>
@@ -35,7 +43,8 @@ import axios from 'axios'
 
 // 유튜브 주소 + API_KEY
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
-const YOUTUBE_API_KEY = 'AIzaSyCpoA4AXknB1SOqIn2S5wUbevdmMtOb22M'
+// const YOUTUBE_API_KEY = 'AIzaSyCpoA4AXknB1SOqIn2S5wUbevdmMtOb22M'
+const YOUTUBE_API_KEY = ''
 
 const API_URL = 'http://127.0.0.1:8000'
 // const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
@@ -58,8 +67,10 @@ export default {
   },
   computed: {
     videoURI () {
-      const trailer = this.trailer.results[0].key
-      return `https://www.youtube.com/embed/${trailer}`
+      // console.log(this.trailer)
+      const trailerVideo = this.trailer
+      // console.log(trailerVideo)
+      return `https://www.youtube.com/embed/${trailerVideo}`
     }
   },
   methods: {
@@ -90,14 +101,14 @@ export default {
           key : YOUTUBE_API_KEY,
           type: 'video',
           part: 'snippet',
-          // q: `${this.movieCard.title} 예고편`
-          q: '어벤져스 예고편'
+          q: `${this.movieCard.title} 예고편`
+          // q: '어벤져스 예고편'
         }
       }) .then((res) => {
-        console.log(res)
-        this.trailer = res.data.items[0]
+        // console.log(res.data)
+        this.trailer = res.data.items[0].id.videoId
+        // console.log(this.trailer)
       }) .catch((err) => {
-
         console.log(err, '에러발생!')
       })
 
@@ -126,18 +137,41 @@ export default {
   position: relative;
   z-index: 1;
   /* font-size: 1rem; */
-  position: absolute;
+  /* display: inline-block; */
 }
 .background-img {
-  /* width: 100%;
-  height: 100%; */
-  
-  /* float: left; */
+  width: 80%;
   opacity: 0.4;
   position: absolute;
+  top: 50%;
+  left: 50%;
   z-index: -1;
-  margin: 0 auto; 
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -20%);
+  /* transform: scale(1.8); */
+  /* animation: scaleImage 5s ease-out forwards; */
+  animation: fadeout 1.5s;
+  /* -webkit-animation: fadeout 4s; */
 }
-
+.detail-fade-in {
+  animation: fadein 2s;
+}
+@keyframes fadeout{
+ from {
+  opacity: 1;
+ }
+ to {
+  opacity: 1;
+ }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="row d-flex justify-content-center p-3 mb-2 bg-dark ">
-        <h1>Main</h1>
+        <h1 class="text-light p-3">Main</h1>
     
       <MovieList
       v-for="movieCard in movieCards"
