@@ -1,5 +1,5 @@
 <template>
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center p-3 mb-2 bg-dark ">
         <h1>Main</h1>
     
       <MovieList
@@ -50,7 +50,7 @@
           }
       },
       created: function() {
-          this.$store.dispatch('loadMovieCards',1)
+          this.$store.dispatch('loadMovieCards', 1)
       },
       computed: {
           movieCards() {
@@ -63,6 +63,7 @@
           ChangePage(event) {
               const num = event.target.innerText
               this.$store.dispatch('loadMovieCards', num)
+              this.$router.push({ name: 'MainView', params: {id: num } })
           },
            BackPage() {
             if (this.n7+ 7 < 500) {

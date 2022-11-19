@@ -28,20 +28,21 @@
       },
       methods: {
         goToDetail() {
-          this.$router.push({ name: 'MovieDetailView', params: {id: this.movieCard.id }})
+          console.log()
+          this.$router.push({ name: 'MovieDetailView', params: {id: this.movieCard.id } })
         }
-      }
-      // computed: {
-      //   printMovieCard() {
-      //     console.log(this.movieCard)
-      //     return this.movieCard
-      //   }
-      // }
+      },
+       // computed: {
+       //  printMovieCard() {
+       //    console.log(this.movieCard)
+       //    return this.movieCard
+       // }
+       // }
   }
   </script>
   
   <style>
     .enlarge:hover img{
-      transform: scale(1.5,1.5);
+      transform: scale(1.2,1.2);
     }
   </style>

@@ -22,7 +22,7 @@ export default new Vuex.Store({
     articles: [],
     movieCards: [],
     token: null,
-    num: 1,
+    num: null,
   },
   getters: {
     isLogin(state) {
@@ -78,6 +78,7 @@ export default new Vuex.Store({
       })
       .then((response) => {
         // console.log(response.data.slice((num-1)*10,(num-1)*10+10))
+        // this.num = num
         context.commit('LOAD_MOVIE_CARDS', response.data.slice((num-1)*10,(num-1)*10+10))
         // context.commit('LOAD_MOVIE_CARDS', response.data.results)
       })
