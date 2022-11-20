@@ -3,7 +3,9 @@
     <h1>Article Page</h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
     <hr>
+    
     <ArticleList/>
+    <p> {{ user }}님 안녕</p>
   </div>
 </template>
 

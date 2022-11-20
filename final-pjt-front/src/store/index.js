@@ -6,8 +6,8 @@ import router from '@/router'
 
 Vue.use(Vuex)
 
-const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
-// const API_KEY = process.env.API_KEY
+// const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
+const API_KEY = process.env.VUE_APP_API_KEY
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -19,6 +19,7 @@ export default new Vuex.Store({
   state: {
     articles: [],
     movieCards: [],
+    totalMovies: [],
     token: null,
     num: 1,
   },
@@ -28,10 +29,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    // CHANGE_PAGES: function (state, num) {
-      
-
-    // },
+    LOAD_TOTAL_MOVIES: function(state, results) {
+      state.totalMovies = results
+    },
 
     LOAD_MOVIE_CARDS: function(state, results) {
       state.movieCards = results
@@ -45,24 +45,30 @@ export default new Vuex.Store({
       state.token = token
       router.push({ name: 'ArticleView' })
     },
-    GO_LOGIN(state, token) {
-      state.token = token
+    GO_LOGIN() {
+      // state.token = token
       router.push({ name: 'LogInView' })
     },
   },
   actions: {
-    // ChangePage: function(context, num) {
-    //   axios({
-    //     method: 'get',
-    //     url: `${API_URL}/api/v1/articles/`,       
-    //   })
-    //   .then((res) => {
-    //     context.commit('CHANGE_PAGES', num)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-    // },
+    loadTotalMovies: function (context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/api/v2/movies/`,
+        params: {
+          api_key: API_KEY,
+          language: 'ko-KR',
+        }
+      })
+      .then((response) => {
+        console.log(response.data)
+        context.commit('LOAD_TOTAL_MOVIES', response.data)
+      })
+      .catch((error) => {
+        console.log(API_KEY)
+        console.log(error)
+      })
+    },
     loadMovieCards: function (context, num) {
       axios({
         method: 'get',
@@ -127,7 +133,7 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          // console.log(res)
+          console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
     },

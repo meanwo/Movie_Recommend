@@ -1,47 +1,55 @@
 <template>
   <div>
     <h1>Detail</h1>
-    <!-- <div v-if="video">
-      <iframe :src="trailerUrl" frameborder="0"></iframe>
-    </div> -->
-  <div v-if="trailer.results">
-    <iframe :src="videoURI" frameborder="0"></iframe>
-  </div>
-  <div v-else>
-    <h2>트레일러가 없습니다!</h2>
-  </div>
+    <div class="">
+      <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+    </div>
   
-  
-  <p>영화 제목 : {{ movieCard?.title }}</p>
-  <p>줄거리 : {{ movieCard?.overview }}</p>
-  <p>개봉일 : {{ movieCard?.released_date }}</p>
-  <p>장르 : {{ movieCard?.genres }}</p>
-  <!-- {{ movieCard?.id }} -->
+    <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9">
+      <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
+    </div>
+    <div v-else>
+      <h2>트레일러가 없습니다!</h2>
+    </div>
+    
+    <p>{{ movieCard.poster_path }}</p>
+    <p>영화 제목 : {{ movieCard?.title }}</p>
+    <p>줄거리 : {{ movieCard?.overview }}</p>
+    <p>개봉일 : {{ movieCard?.released_date }}</p>
 
-     <!-- <p>제목 : {{ article?.title }}</p> 
-    <p>내용 : {{ article?.content }}</p>
-    <p>작성시간 : {{ article?.created_at }}</p>
-    <p>수정시간 : {{ article?.updated_at }}</p> -->
+    <GenreList v-for="(genre, index) in movieCard.genres" :key="index" :genre="genre">
+      <!-- <button @click="goToGenres"> {{ genre.name }} </button>  -->
+    </GenreList>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import GenreList from '@/components/GenreList'
 
 const API_URL = 'http://127.0.0.1:8000'
+// const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
 const API_KEY = process.env.VUE_APP_API_KEY
 export default {
   name: 'MovieDetailView',
+  components: {
+          GenreList,
+      },
   data() {
+    const base_url = 'https://image.tmdb.org/t/p/original/'
     return {
-      movieCard: null,
-      trailer: null,
+      movieCard: '',
+      trailer: [],
+      base_url,
+      // genreList : null,
       
     }
   },
   created() {
     this.getMovieDetail()
-    console.log(process.env.VUE_APP_API_KEY)
+    console.log(this.movieCard.genres)
+    // console.log(process.env.VUE_APP_API_KEY)
+    // this.getGenreList()
   },
   computed: {
     videoURI () {
@@ -81,7 +89,20 @@ export default {
       .catch((err) => {
         console.log(err)
       })
+    },
+    goToGenres() {
+      console.log()
+        // this.$router.push({ name: 'GenresView', params: {}})
+      }
     }
   }
-}
+
 </script>
+<style scoped>
+.background-img {
+  float: left;
+  margin: 0 auto;
+  opacity: 10;
+}
+
+</style>

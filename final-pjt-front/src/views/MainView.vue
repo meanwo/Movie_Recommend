@@ -51,6 +51,7 @@
       },
       created: function() {
           this.$store.dispatch('loadMovieCards',1)
+          this.$store.dispatch('loadTotalMovies')
       },
       computed: {
           movieCards() {
