@@ -43,6 +43,6 @@
   
   <style>
     .enlarge:hover img{
-      transform: scale(1.2,1.2);
+      transform: scale(1.1,1.1);
     }
   </style>

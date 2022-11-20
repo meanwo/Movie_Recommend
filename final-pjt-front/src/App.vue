@@ -1,14 +1,33 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg bg-light justify-content-center">
-      <router-link :to="{ name: 'MainView' }"> Main</router-link> |
-      <router-link v-if="this.$store.state.token" :to="{ name: 'ArticleView' }">  Articles</router-link> |
-      <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> |
-      <router-link v-if="!this.$store.state.token" :to="{ name: 'LogInView' }">  LogInPage</router-link>
-      <button v-if="this.$store.state.token" class="logoutButton" @click="logOut">Logout</button>
+    <nav class="navbar bg-light">
+      <b-button v-b-toggle.sidebar-backdrop>Menu</b-button>
+      <div>
+      </div>
+      <!-- title="Menu"  -->
+      <!-- :backdrop-variant="variant" -->
+      <b-sidebar 
+      id="sidebar-backdrop" 
+      backdrop
+      shadow>
+      <router-link :to="{ name: 'MainView' }">Main</router-link>
+      <div class="px-3 py-2">
+        <p>액션</p>
+        <p>스릴러</p>
+        <p>드라마</p>
+        <p>공포</p>
+      </div>
+      </b-sidebar>
+      <div class="justify-content-flex-end">
+        <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> |
+        <router-link v-if="!this.$store.state.token" :to="{ name: 'LogInView' }">  LogInPage</router-link>
+        <router-link v-if="this.$store.state.token" :to="{ name: 'ArticleView' }">  Articles</router-link> |
+        <button v-if="this.$store.state.token" class="logoutButton" @click="logOut">Logout</button>
+      </div>
     </nav>
     <router-view/>
   </div>
+  <!-- <p>navbar navbar-expand-lg bg-light justify-content-center</p> -->
 </template>
 <script>
 export default {

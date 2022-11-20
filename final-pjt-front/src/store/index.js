@@ -21,8 +21,9 @@ export default new Vuex.Store({
   state: {
     articles: [],
     movieCards: [],
+    totalMovies: [],
     token: null,
-    num: null,
+    num: 1,
   },
   getters: {
     isLogin(state) {
@@ -30,10 +31,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    // CHANGE_PAGES: function (state, num) {
-      
-
-    // },
+    LOAD_TOTAL_MOVIES: function(state, results) {
+      state.totalMovies = results
+    },
 
     LOAD_MOVIE_CARDS: function(state, results) {
       state.movieCards = results
@@ -47,24 +47,29 @@ export default new Vuex.Store({
       state.token = token
       router.push({ name: 'ArticleView' })
     },
-    GO_LOGIN(state, token) {
+    GO_MAIN(state, token) {
       state.token = token
-      router.push({ name: 'LogInView' })
+      router.push({ name: 'MainView' })
     },
   },
   actions: {
-    // ChangePage: function(context, num) {
-    //   axios({
-    //     method: 'get',
-    //     url: `${API_URL}/api/v1/articles/`,       
-    //   })
-    //   .then((res) => {
-    //     context.commit('CHANGE_PAGES', num)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-    // },
+   loadTotalMovies: function (context) {
+    axios({
+      method: 'get',
+      url: `${API_URL}/api/v2/movies`,
+      params: {
+        api_key: API_KEY,
+        language: 'ko-KR',
+      }
+    })
+    .then((response) => {
+      console.log(response.data)
+      context.commit('LOAD_TOTAL_MOVIES', response.data)
+    })
+    .catch((err)=> {
+      console.log(err)
+    })
+   },
     loadMovieCards: function (context, num) {
       axios({
         method: 'get',
@@ -143,7 +148,7 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          context.commit('GO_LOGIN')
+          context.commit('GO_MAIN')
         })
     },
   },

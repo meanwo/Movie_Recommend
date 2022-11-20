@@ -18,21 +18,19 @@
     <h2>트레일러가 없습니다!</h2>
   </div>
   
-  <div class="detail-fade-in text-light p-3">
-  <p>{{ movieCard?.poster_path }}</p>
+  <div class="detail-fade-in text-light p-3 container">
+  <!-- <p>{{ movieCard?.poster_path }}</p> -->
   <p>영화 제목 : {{ movieCard?.title }}</p>
+  <p>평점: &emsp;{{ movieCard?.vote_avg }}</p>
   <p>줄거리 : {{ movieCard?.overview }}</p>
   <p>개봉일 : {{ movieCard?.released_date }}</p>
   <p>장르 : {{ movieCard?.genres }}</p> -->
     {{ movieCard?.id }}
     <br>
+  <GenreList v-for="(genre, index) in movieCard.genres" :key="index" :genre="genre"/>
   <button @click="ChangePage">back</button>
   </div>
 
-     <!-- <p>제목 : {{ article?.title }}</p> 
-    <p>내용 : {{ article?.content }}</p>
-    <p>작성시간 : {{ article?.created_at }}</p>
-    <p>수정시간 : {{ article?.updated_at }}</p> -->
    </div> 
 
 
@@ -40,6 +38,7 @@
 
 <script>
 import axios from 'axios'
+import GenreList from '@/components/GenreList'
 
 // 유튜브 주소 + API_KEY
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
@@ -51,16 +50,19 @@ const API_URL = 'http://127.0.0.1:8000'
 // const API_KEY = process.env.VUE_APP_API_KEY
 export default {
   name: 'MovieDetailView',
+  components: {
+    GenreList,
+  },
   data() {
     const base_url = 'https://image.tmdb.org/t/p/original'
     return {
       movieCard: '',
       trailer: [],
       base_url
-      
     }
   },
   created() {
+    window.scrollTo( { top: 0, behavior: "smooth"})
     this.getMovieDetail()
     // console.log(process.env.VUE_APP_API_KEY)
     // console.log("트레일러.리절트",this.trailer.results)
@@ -83,6 +85,7 @@ export default {
           this.movieCard = res.data
           // console.log(this.movieCard)
           this.movieTrailer()
+
         })
         .catch((err) => {
           console.log(err)
@@ -152,11 +155,11 @@ export default {
   transform: translate(-50%, -20%);
   /* transform: scale(1.8); */
   /* animation: scaleImage 5s ease-out forwards; */
-  animation: fadeout 1.5s;
+  animation: fadeout 2.5s;
   /* -webkit-animation: fadeout 4s; */
 }
 .detail-fade-in {
-  animation: fadein 2s;
+  animation: fadein 2.5s;
 }
 @keyframes fadeout{
  from {
@@ -168,7 +171,7 @@ export default {
 }
 @keyframes fadein {
   from {
-    opacity: 0;
+    opacity: -1;
   }
   to {
     opacity: 1;
