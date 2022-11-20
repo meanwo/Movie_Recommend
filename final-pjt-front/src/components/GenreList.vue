@@ -18,7 +18,7 @@ export default {
     methods: {
         goToGenres() {
             // console.log(this.genre.id)
-            this.$router.push({ name: 'GenreDetailView', params: {id:this.genre.id}})
+            this.$router.push({ name: 'GenreDetailView', params: {id:this.genre.id, genreName: this.genre.name}})
         }
     }
     

@@ -155,11 +155,11 @@ export default {
   transform: translate(-50%, -20%);
   /* transform: scale(1.8); */
   /* animation: scaleImage 5s ease-out forwards; */
-  animation: fadeout 2.5s;
+  animation: fadeout 1s;
   /* -webkit-animation: fadeout 4s; */
 }
 .detail-fade-in {
-  animation: fadein 2.5s;
+  animation: fadein 1s;
 }
 @keyframes fadeout{
  from {

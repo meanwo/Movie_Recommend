@@ -1,12 +1,16 @@
 <template>
-  <div>
-    
-    <GenreMovieItem
-      v-for="GenreMovie in GenreMovies"
-      :key="GenreMovie.id"
-      :GenreMovie="GenreMovie"
-    />
+<div class="row d-flex justify-content-center p-3 mb-2 bg-dark">
+<h1 class="text-light p-3"> {{this.$route.params.genreName}}</h1>
+
+  <GenreMovieItem
+    v-for="GenreMovie in GenreMovies"
+    :key="GenreMovie.id"
+    :GenreMovie="GenreMovie"
+    class="col-3 m-3"
+  />
   </div>
+
+
 </template>
 
 <script>
@@ -20,6 +24,9 @@ export default {
         return {
             genreMovie: null,
         }
+    },
+    created() {
+       window.scrollTo( { top: 0, behavior: "smooth"})
     },
     computed: {
       GenreMovies() {

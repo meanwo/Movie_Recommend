@@ -1,23 +1,27 @@
 <template>
   <div id="app">
     <nav class="navbar bg-light">
-      <b-button v-b-toggle.sidebar-backdrop>Menu</b-button>
+      <b-button v-b-toggle.sidebar-backdrop class="moving-nav">≡</b-button>
       <div>
       </div>
       <!-- title="Menu"  -->
       <!-- :backdrop-variant="variant" -->
+     
       <b-sidebar 
-      id="sidebar-backdrop" 
+      
+      id="sidebar-backdrop"
       backdrop
       shadow>
-      <router-link :to="{ name: 'MainView' }">Main</router-link>
+      <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link>
       <div class="px-3 py-2">
-        <p>액션</p>
-        <p>스릴러</p>
-        <p>드라마</p>
-        <p>공포</p>
+        <p><router-link :to="{ name: 'GenreDetailView', params: { id: 28 } }" class="text-line">액션</router-link></p>
+        <p><router-link :to="{ name: 'GenreDetailView', params: { id: 14 } }" class="text-line">판타지</router-link></p>
+        <p><router-link :to="{ name: 'GenreDetailView', params: { id: 18 } }" class="text-line">드라마</router-link></p>
+        <p><router-link :to="{ name: 'GenreDetailView', params: { id: 27 } }" class="text-line">공포</router-link></p>
+        
       </div>
       </b-sidebar>
+     
       <div class="justify-content-flex-end">
         <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> |
         <router-link v-if="!this.$store.state.token" :to="{ name: 'LogInView' }">  LogInPage</router-link>
@@ -39,7 +43,7 @@ export default {
 }
 </script>
 <style>
-#app {
+#app { /* 라우터 사이 | 색깔*/
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,17 +52,25 @@ export default {
   /* position: static;
   z-index: 2; */
 }
-
 nav {
   padding: 30px;
 }
 
-nav a {
+nav a { /* navbar 라우터 글씨 색*/
   font-weight: bold;
-  color: #2c3e50;
+  color:#2c3e50;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  /* color: #42b983; */
+  color:black;
+}
+.text-line {
+  text-decoration-line: none;
+}
+.moving-nav{
+  height: 30px;
+  position: sticky;
+  top: 0;
 }
 </style>
