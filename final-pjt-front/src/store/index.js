@@ -8,11 +8,8 @@ Vue.use(Vuex)
 
 // const API_KEY = "bdc7e9d7c737fde2202d73aceef9477b"
 const API_KEY = process.env.VUE_APP_API_KEY
-<<<<<<< HEAD
 
 // const API_KEY = process.env.API_KEY
-=======
->>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -50,36 +47,12 @@ export default new Vuex.Store({
       state.token = token
       router.push({ name: 'ArticleView' })
     },
-<<<<<<< HEAD
     GO_MAIN(state, token) {
       state.token = token
       router.push({ name: 'MainView' })
     },
   },
-  actions: {
-   loadTotalMovies: function (context) {
-    axios({
-      method: 'get',
-      url: `${API_URL}/api/v2/movies`,
-      params: {
-        api_key: API_KEY,
-        language: 'ko-KR',
-      }
-    })
-    .then((response) => {
-      console.log(response.data)
-      context.commit('LOAD_TOTAL_MOVIES', response.data)
-    })
-    .catch((err)=> {
-      console.log(err)
-    })
-   },
-=======
-    GO_LOGIN() {
-      // state.token = token
-      router.push({ name: 'LogInView' })
-    },
-  },
+
   actions: {
     loadTotalMovies: function (context) {
       axios({
@@ -99,7 +72,6 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
->>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
     loadMovieCards: function (context, num) {
       axios({
         method: 'get',

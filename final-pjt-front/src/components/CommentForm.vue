@@ -40,25 +40,25 @@ export default {
       })
         .then((res) => {
           console.log(res)
-          this.getComments()
+          this.$emit('create-comment', res)
         })
         .catch((err) => {
           console.log(err);
         });
         this.comment = null    
     },
-    getComments() { 
-        axios({
-          method: 'get',
-          url: `${API_URL}/api/v2/comments/list/${this.movieCard.id}/`
+    // getComments() { 
+    //     axios({
+    //       method: 'get',
+    //       url: `${API_URL}/api/v2/comments/list/${this.movieCard.id}/`
           
-        })
-          .then((res) => {
-            // console.log(res)
-            this.comments = res.data;
-            console.log(this.comments)
-          })
-      },
+    //     })
+    //       .then((res) => {
+    //         // console.log(res)
+    //         this.comments = res.data;
+    //         console.log(this.comments)
+    //       })
+    //   },
   },
 };
 </script>

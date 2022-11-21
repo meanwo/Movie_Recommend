@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <div class="row d-flex justify-content-center p-3 mb-2 bg-dark">
 <h1 class="text-light p-3"> {{this.$route.params.genreName}}</h1>
 
@@ -12,16 +11,6 @@
   </div>
 
 
-=======
-  <div>
-    
-    <GenreMovieItem
-      v-for="GenreMovie in GenreMovies"
-      :key="GenreMovie.id"
-      :GenreMovie="GenreMovie"
-    />
-  </div>
->>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
 </template>
 
 <script>
@@ -36,12 +25,9 @@ export default {
             genreMovie: null,
         }
     },
-<<<<<<< HEAD
     created() {
        window.scrollTo( { top: 0, behavior: "smooth"})
     },
-=======
->>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
     computed: {
       GenreMovies() {
         let GenreMovieList = [];

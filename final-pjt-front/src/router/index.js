@@ -54,11 +54,7 @@ const routes = [
     component: DetailView,
   },
   {
-<<<<<<< HEAD
     path:'/genre/:id',
-=======
-    path: '/genre/:id',
->>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
     name: 'GenreDetailView',
     component: GenreDetailView,
   },
