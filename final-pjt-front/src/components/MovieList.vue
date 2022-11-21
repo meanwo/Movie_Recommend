@@ -1,11 +1,11 @@
 <template>
-    <div class="card enlarge" style="width: 18rem margin-left: 20px; margin-bottom: 20px" @click="goToDetail">
+    <div class="card-group enlarge" style="width: 18rem; margin-left: 20px; margin-bottom: 20px" @click="goToDetail">
       <!-- <router-link :to="{name: 'MovieDetailView', params: {id: movieCard.id }}"> -->
-        <img :src="base_url+movieCard.poster_path" alt="영화이미지">
+        <img  class="card-img-top img-card" :src="base_url+movieCard.poster_path" alt="영화이미지">
       <!-- </router-link> -->
       <!-- <img :src="base_url+movieCard.poster_path" alt="영화이미지"> -->
       <!-- <h5 class="card-title font-weight-bold: 700">{{ movieCard.original_title }}</h5> -->
-      <h4 class="card-title font-weight-bold: 700">{{ movieCard.title }}</h4>
+      <h5 class="card-title font-weight-bold: 700 movie-list-page each-card-text text-light">{{ movieCard.title }}</h5>
       <!-- {{ movieCard.id }} -->
       <!-- {{ movieCard }} -->
 
@@ -15,7 +15,7 @@
   <script>
   export default {
       name: 'MovieList',
-      data () {
+      data () { 
         const base_url = 'https://image.tmdb.org/t/p/original/'
         return {
           base_url
@@ -42,7 +42,24 @@
   </script>
   
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
     .enlarge:hover img{
       transform: scale(1.1,1.1);
+    }
+    .movie-list-page {
+      font-family: 'Noto Sans KR', sans-serif
+      text-light
+    }
+    
+    .img-card{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+
+    }
+    .each-card-text{
+      z-index: 1;
+      justify-content: center !important;
     }
   </style>

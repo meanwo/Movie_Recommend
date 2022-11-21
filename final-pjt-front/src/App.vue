@@ -1,14 +1,13 @@
 <template>
   <div id="app">
-    <nav class="navbar bg-light">
-      <b-button v-b-toggle.sidebar-backdrop class="moving-nav">≡</b-button>
+    <nav class="navbar bg-light home-nav">
+      <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
       <div>
       </div>
       <!-- title="Menu"  -->
       <!-- :backdrop-variant="variant" -->
      
       <b-sidebar 
-      
       id="sidebar-backdrop"
       backdrop
       shadow>
@@ -33,7 +32,7 @@
   </div>
   <!-- <p>navbar navbar-expand-lg bg-light justify-content-center</p> -->
 </template>
-<script>
+<script scoped>
 export default {
   methods: {
     logOut() {
@@ -43,6 +42,7 @@ export default {
 }
 </script>
 <style>
+
 #app { /* 라우터 사이 | 색깔*/
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -69,8 +69,15 @@ nav a.router-link-exact-active {
   text-decoration-line: none;
 }
 .moving-nav{
+  /* width: 60px; */
+  /* align-items: center; */
+  /* justify-content: center; */
   height: 30px;
   position: sticky;
   top: 0;
+  /* padding: 0px 0px 3px 0px; */
+}
+.home-nav{
+  /* position:sticky; */
 }
 </style>

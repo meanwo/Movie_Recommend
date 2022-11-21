@@ -1,6 +1,8 @@
 <template>
   <div>
+   
     <button @click="goToGenres"> {{ genre.name }} </button>
+
   </div>
 </template>
 

@@ -3,6 +3,7 @@
     <div class="front p-3 mb-2 bg-dark">
     <h1 class="text-light p-3">{{ movieCard.title}}</h1>
     <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+
  
             
   <!-- TMDB API일 때 -->
@@ -18,11 +19,11 @@
     <h2>트레일러가 없습니다!</h2>
   </div>
   
-  <div class="detail-fade-in text-light p-3 container">
+  <div class="detail-fade-in text-light p-3 container detail-page-txt">
   <!-- <p>{{ movieCard?.poster_path }}</p> -->
-  <p>영화 제목 : {{ movieCard?.title }}</p>
-  <p>평점: &emsp;{{ movieCard?.vote_avg }}</p>
-  <p>줄거리 : {{ movieCard?.overview }}</p>
+  <h4>영화 제목 : {{ movieCard?.title }}</h4>
+  <h4>평점: &emsp;{{ movieCard?.vote_avg }}</h4><br>
+  <h3>줄거리 : {{ movieCard?.overview }}</h3>
   <p>개봉일 : {{ movieCard?.released_date }}</p>
   <p>장르 : {{ movieCard?.genres }}</p> -->
     {{ movieCard?.id }}
@@ -133,6 +134,7 @@ export default {
 }
 </script>
 <style scoped>
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 .front {
   /* width: 100%;
   height: 100%; */
@@ -143,23 +145,25 @@ export default {
   /* display: inline-block; */
 }
 .background-img {
-  width: 80%;
   opacity: 0.4;
   position: absolute;
   top: 50%;
   left: 50%;
   z-index: -1;
+  width: 80%;
+  /* width: 600px;
+  height: 800px; */
   display: flex;
   justify-content: center;
   align-items: center;
   transform: translate(-50%, -20%);
   /* transform: scale(1.8); */
   /* animation: scaleImage 5s ease-out forwards; */
-  animation: fadeout 1s;
+  animation: fadeout 0.5s;
   /* -webkit-animation: fadeout 4s; */
 }
 .detail-fade-in {
-  animation: fadein 1s;
+  animation: fadein cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 @keyframes fadeout{
  from {
@@ -176,5 +180,8 @@ export default {
   to {
     opacity: 1;
   }
+}
+.detail-page-txt{
+  font-family: 'Noto Sans KR', sans-serif
 }
 </style>

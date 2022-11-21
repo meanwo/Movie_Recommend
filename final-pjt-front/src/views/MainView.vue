@@ -1,16 +1,16 @@
 <template>
     <div class="row d-flex justify-content-center p-3 mb-2 bg-dark ">
-        <h1 class="text-light p-3">Main</h1>
+        <h1 class="text-light p-3 main-txt">Main</h1>
     
       <MovieList
       v-for="movieCard in movieCards"
       :key="movieCard.id"
       :movieCard="movieCard"
-      class="col-3 m-3"
+      class=".col-6 col-md-3 col-lg-2 m-3"
       />
-  
-      
-      <div>
+      <!-- class="col-2 m-3" -->
+    
+      <div class="mt-5">
           <button @click.self="FirstPage">&lt;&lt;</button>
           <button @click.self="FrontPage">&lt;</button>
           <button @click="ChangePage">{{ n1 }}</button>
@@ -20,13 +20,11 @@
           <button @click="ChangePage">{{ n5 }}</button>
           <button @click="ChangePage">{{ n6 }}</button>
           <button @click="ChangePage">{{ n7 }}</button>
-          <span>
-              <button @click.self="BackPage">></button>
-              <button @click.self="EndPage">>></button>
-          </span>
+          <button @click.self="BackPage">></button>
+          <button @click.self="EndPage">>></button> 
       </div>
-      
     </div>
+      
   
   </template>
   
@@ -101,5 +99,8 @@
   </script>
   
   <style>
-  
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+  .main-txt {
+    font-family: 'Noto Sans KR', sans-serif
+  }
   </style>

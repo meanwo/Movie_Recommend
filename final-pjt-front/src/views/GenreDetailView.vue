@@ -6,7 +6,7 @@
     v-for="GenreMovie in GenreMovies"
     :key="GenreMovie.id"
     :GenreMovie="GenreMovie"
-    class="col-3 m-3"
+    class=".col-6 col-md-2 m-3"
   />
   </div>
 
