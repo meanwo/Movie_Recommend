@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="front p-3 mb-2 bg-dark">
     <h1 class="text-light p-3">{{ movieCard.title }}</h1>
     <img
@@ -47,10 +48,34 @@
     <CommentForm :movie-card="movieCard"/>
     <CommentList :movie-card="movieCard"/>
     {{comments}}
+=======
+  <div>
+    <h1>Detail</h1>
+    <div class="">
+      <img :src="base_url+movieCard.poster_path" alt="영화이미지" class="background-img">
+    </div>
+  
+    <div v-if="trailer.results" class="embed-responsive embed-responsive-21by9">
+      <iframe class="embed-responsive-item" width="850" height="550" :src="videoURI" frameborder="0"></iframe>
+    </div>
+    <div v-else>
+      <h2>트레일러가 없습니다!</h2>
+    </div>
+    
+    <p>{{ movieCard.poster_path }}</p>
+    <p>영화 제목 : {{ movieCard?.title }}</p>
+    <p>줄거리 : {{ movieCard?.overview }}</p>
+    <p>개봉일 : {{ movieCard?.released_date }}</p>
+
+    <GenreList v-for="(genre, index) in movieCard.genres" :key="index" :genre="genre">
+      <!-- <button @click="goToGenres"> {{ genre.name }} </button>  -->
+    </GenreList>
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import axios from "axios";
 import GenreList from "@/components/GenreList"
 import CommentForm from '@/components/CommentForm'
@@ -73,18 +98,45 @@ export default {
   },
   data() {
     const base_url = "https://image.tmdb.org/t/p/original";
+=======
+import axios from 'axios'
+import GenreList from '@/components/GenreList'
+
+const API_URL = 'http://127.0.0.1:8000'
+// const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
+const API_KEY = process.env.VUE_APP_API_KEY
+export default {
+  name: 'MovieDetailView',
+  components: {
+          GenreList,
+      },
+  data() {
+    const base_url = 'https://image.tmdb.org/t/p/original/'
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
     return {
       movieCard: '',
       trailer: [],
       base_url,
+<<<<<<< HEAD
       comments: [],
     };
+=======
+      // genreList : null,
+      
+    }
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
   },
   created() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     this.getMovieDetail()
+<<<<<<< HEAD
     // console.log(process.env.VUE_APP_API_KEY)
     // console.log("트레일러.리절트",this.trailer.results)
+=======
+    console.log(this.movieCard.genres)
+    // console.log(process.env.VUE_APP_API_KEY)
+    // this.getGenreList()
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
   },
   computed: {
     videoURI() {
@@ -153,6 +205,7 @@ export default {
           console.log(err, "에러발생!");
         });
 
+<<<<<<< HEAD
       // axios({
       //   method: 'get',
       //   url: `https://api.themoviedb.org/3/movie/${this.movieCard.id}/videos?api_key=${API_KEY}&language=ko-KR`,
@@ -205,8 +258,28 @@ export default {
   }
   to {
     opacity: 1;
+=======
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    },
+    goToGenres() {
+      console.log()
+        // this.$router.push({ name: 'GenresView', params: {}})
+      }
+    }
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
   }
+
+</script>
+<style scoped>
+.background-img {
+  float: left;
+  margin: 0 auto;
+  opacity: 10;
 }
+<<<<<<< HEAD
 @keyframes fadein {
   from {
     opacity: -1;
@@ -216,3 +289,7 @@ export default {
   }
 }
 </style>
+=======
+
+</style>
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd

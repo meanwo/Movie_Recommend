@@ -50,7 +50,11 @@
           }
       },
       created: function() {
+<<<<<<< HEAD
           this.$store.dispatch('loadMovieCards', 1)
+=======
+          this.$store.dispatch('loadMovieCards',1)
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
           this.$store.dispatch('loadTotalMovies')
       },
       computed: {

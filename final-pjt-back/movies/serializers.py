@@ -34,6 +34,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class MovieSerializer(serializers.ModelSerializer):
     genres = GenreSerializer(many=True, read_only=True)
+
     comment_set = CommentSerializer(many=True, read_only=True)
     comment_count = serializers.IntegerField(source='comment_set.count', read_only=True)
 
@@ -42,6 +43,12 @@ class MovieSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'overview', 'released_date', 'poster_path', 'genres', 'vote_avg', 'comment_set', 'comment_count')
 
 
+
+
+
+    class Meta:
+        model = Movie
+        fields = ('id', 'title', 'overview', 'released_date', 'poster_path', 'genres', 'vote_avg')
 
 
 

@@ -7,7 +7,11 @@
       <!-- <h5 class="card-title font-weight-bold: 700">{{ movieCard.original_title }}</h5> -->
       <h4 class="card-title font-weight-bold: 700">{{ movieCard.title }}</h4>
       <!-- {{ movieCard.id }} -->
+<<<<<<< HEAD
       <!-- {{ movieCard }} -->
+=======
+      {{ movieCard.genres }}
+>>>>>>> c718f2e78a17277d28f1b63038b27e9146baf9bd
 
     </div>
   </template>
