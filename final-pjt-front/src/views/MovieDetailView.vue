@@ -147,12 +147,13 @@ export default {
 .background-img {
   opacity: 0.4;
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   z-index: -1;
-  width: 80%;
-  /* width: 600px;
-  height: 800px; */
+  /* width: 1000px; */
+  width: 55%;
+  /* height: 1200px; */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

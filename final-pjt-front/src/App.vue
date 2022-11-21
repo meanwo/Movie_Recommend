@@ -22,7 +22,7 @@
       </b-sidebar>
      
       <div class="justify-content-flex-end">
-        <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> |
+        <!-- <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> | -->
         <router-link v-if="!this.$store.state.token" :to="{ name: 'LogInView' }">  LogInPage</router-link>
         <router-link v-if="this.$store.state.token" :to="{ name: 'ArticleView' }">  Articles</router-link> |
         <button v-if="this.$store.state.token" class="logoutButton" @click="logOut">Logout</button>

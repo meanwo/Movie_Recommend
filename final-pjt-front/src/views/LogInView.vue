@@ -4,28 +4,34 @@
       <!-- <div class="random-img"></div> -->
       <!-- <img src="@/assets/tumblr_mflsddIQER1rtrofoo1_500.gif" alt="" class="login-img"  id="movingPoster"> -->
       <!-- <img src="@/assets/23053C4758A511D106.gif" alt="" class="login-img"  id="movingPoster"> -->
-      <img v-for="name in images" :key="name.id" :src="require(`@/assets/images${name}`)" alt="" class="login-img"  >
+      <!-- <img v-for="name in images" :key="name.id" :src="require(`@/assets/images${name}`)" alt="" class="login-img"  > -->
+      <img id="movingPoster" border="0">
       <!-- class="login-img" -->
       <div class="form-wrap">
         <!-- <h1>LogIn Page</h1> -->
+        <div class="container">
         <div class="button-wrap">
           <div id="btn"></div>
           <button type="button" class="togglebtn">Log in</button>
-          <button type="button" class="togglebtn">회원가입</button>
+          <button type="button" class="togglebtn" @click="goToSignUp">회원가입</button>
         </div>
         <!-- <div class="container"> -->
+          
           <form @submit.prevent="logIn" id="login" class="input-group">
             <!-- <label for="username">username : </label> -->
+            <!-- <div class="container justify-content-center"> -->
             <input type="text"  class="input-field" placeholder="User name" required v-model="username"><br>
+            <!-- </div> -->
             
             <!-- <label for="password"> password : </label> -->
             <input type="password" class="input-field" placeholder="Enter Password" required v-model="password">
-            
+           
             <div class="find-btn">
               <p><input type="checkbox" class="checkbox">Remember Password</p>
               <button class="submit" id="find-btn1">Login</button>
             </div>
           </form>
+          </div>
       </div>
       <!-- <input type="submit" value="logIn"> -->
     <!-- </div> -->
@@ -34,6 +40,15 @@
 </template>
 
 <script>
+// const images = [
+//   'tumblr_mflsddIQER1rtrofoo1_500.gif', 'ySPeTDW.gif',
+//   '02_Looper_(2012).gif', 'avengers-infinity-war-movie.gif',
+//   '23053C4758A511D106.gif'
+// ]
+// const chosenImage = images[Math.floor(Math.random() * images.length)]
+// const bgImage = document.createElement("img")
+// bgImage.src = `@/assets/${chosenImage}`
+// document.div.appendChild(bgImage)
 
 // setInterval(() => {
 //   let backgroundImg = document.getElementById('movingPoster')
@@ -53,8 +68,11 @@ export default {
     return {
       username: null,
       password: null,
-      images: ['tumblr_mflsddIQER1rtrofoo1_500.gif', 'ySPeTDW.gif', '02_Looper_(2012).gif', 'avengers-infinity-war-movie.gif', '23053C4758A511D106.gif'],
+      // images: ['tumblr_mflsddIQER1rtrofoo1_500.gif', 'ySPeTDW.gif', '02_Looper_(2012).gif', 'avengers-infinity-war-movie.gif', '23053C4758A511D106.gif'],
     }
+  },
+  created() {
+    this.changeImg()
   },
   methods: {
     logIn() {
@@ -67,6 +85,35 @@ export default {
       }
       this.$store.dispatch('logIn', payload)
     },
+    goToSignUp () {
+      this.$router.push({ name: 'SignUpView'})
+    },
+    changeImg(){
+      let imgArray = new Array()
+      // imgArray[0] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/tumblr_mflsddIQER1rtrofoo1_500.gif"
+      imgArray[0] = "02_Looper_(2012).gif"
+      // imgArray[1] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/23053C4758A511D106.gif"
+      // imgArray[1] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/23053C4758A511D106.gif"
+      // imgArray[2] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/02_Looper_(2012).gif"
+      // imgArray[2] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/02_Looper_(2012).gif"
+      // imgArray[3] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/4.gif"
+      // imgArray[3] = "C:/Users/J/OneDrive/바탕 화면/final_pjt/Movie_Recommend/final-pjt-front/src/assets/4.gif"
+
+      let imgNum = Math.round(Math.random()*3)
+      let objImg = document.getElementById('movingPoster')
+      console.log(objImg)
+      objImg.src = imgArray[imgNum]
+      
+      
+
+      // let backgroundImg = document.getElementById('movingPoster')
+      // let imgArr = ['@/assets/images/tumblr_mflsddIQER1rtrofoo1_500.gif',
+      // '@/assets/images/ySPeTDW.gif', '@/assets/images/02_Looper_(2012).gif', 
+      // '@/assets/images/avengers-infinity-war-movie.gif', '@/assets/images/23053C4758A511D106.gif'
+      // ]
+      // let ranNum = Math.floor(Math.random() * imgArr.length)
+      // backgroundImg.src = imgArr[ranNum]
+    }
 
   },
   
@@ -88,12 +135,14 @@ export default {
     width: 380px;
     height: 400px;
     position: relative;
-    margin: 10% auto;
+    margin: 15% auto;
     background: #fff;
     padding: 10px;
     overflow: hidden;
     opacity: 0.8;
-    /* animation: fadein 2s; */
+    justify-content: center;
+    align-items: center;
+    animation: fadein 3s;
 }
 @keyframes fadein {
   from {
@@ -137,25 +186,26 @@ export default {
     cursor: pointer;
 }
 .input-group {
-    top: 100;
-   
-    position: absolute;
-    width: 280px;
+    top: 50px;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    width: 300px;
     transition: .5s;
 }
 .input-field {
     width: 100%;
-  
-    padding: 10px 0px;
-    /* margin: 5px 0; */
+    padding: 10px 10px;
+    margin: 0px  0px 1px -1px;
     border: none;
     border-bottom: 1px solid #999;
     outline: none;
     background: transparent;
 }
+
 .submit {
     /* left: 50px !important; */
-    width: 75%;
+    width: 65%;
     padding: 5px 30px 5px 30px; 
     cursor: pointer;
     display: block;
@@ -167,7 +217,7 @@ export default {
     border-radius: 30px;
 }
 .checkbox {
-    margin: 20px 30px 20px 5px;
+    margin: 15px 10px 20px -80px;
     /* margin: 40px 30px; */
 }
 /* .find-btn{
@@ -175,7 +225,7 @@ export default {
 } */
 #find-btn1 {
   display: inline-block;
-  margin: 0px 0px 0px 85px;
+  margin: 30px 0px 0px 120px;
 
 }
 span {
