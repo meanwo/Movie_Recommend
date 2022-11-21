@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{article}}
     <h5>{{ article.id }}</h5>
     <p>작성자 : {{ article.username }}</p>
     <p>{{ article.title }}</p>
