@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="comment-box">
     <!-- {{comments}} -->
     <CommentListItem
       @delete-comment="deleteComment"
@@ -21,7 +21,7 @@ export default {
       CommentListItem,
     },
     props: {
-      movieCard: Object,
+      movieCard: String,
       comments: Array,
     },
     computed: {
@@ -59,4 +59,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.comment-box {
+  margin: 0px 0px 0px 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  
+  /* justify-content: flex-start; */
+
+  /* align-items: start; */
+}
+</style>

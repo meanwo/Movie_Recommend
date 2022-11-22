@@ -136,7 +136,11 @@ export default new Vuex.Store({
       })
         .then((res) => {
           // console.log(res)
-          context.commit('SAVE_TOKEN', res.data.key)
+          context.commit('GO_MAIN', res.data.key)
+        })
+        .catch((err) => {
+          console.log(err)
+          alert('아이디 혹은 비밀번호가 다릅니다.')
         })
     },
     logOut(context) {

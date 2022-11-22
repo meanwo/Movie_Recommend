@@ -4,16 +4,16 @@
     <div class="container">
     <section id="formHolder">
       
-      <div class="row">
+      <div class="row box">
         <div class="col-sm-6 brand"> 
           <img src="@/assets/j57xow5jgt.jpg" alt="" class="signup-img" >
           <span>Pat & Mat</span>
 
 
-          <div class="success-msg">
+          <!-- <div class="success-msg">
             <p>환영합니다! 패트와 매트 티비에 가입 되었습니다.</p>
             <a href="" class="profile">Your Profile</a>
-          </div>
+          </div> -->
         </div>
     <!-- Form Box -->
     <div class="col-sm-6 form">
@@ -22,19 +22,19 @@
       <form @submit.prevent="signUp" clas="signup-form">
 
       <div class="form-group">
-        <label for="username" >username : </label>
-        <input type="text" id="username" class="name" v-model="username">
+        <label for="username" > </label>
+        <input type="text" id="username" class="name" placeholder="USER NAME" required v-model="username">
       <span class="error"></span>
       </div>
 
       <div class="form-group">
-      <label for="password1"> password : </label>
-      <input type="password" id="password1" class="pass" v-model="password1"><br>
+      <label for="password1"> </label>
+      <input type="password" id="password1" class="pass" placeholder="PASSWORD" required v-model="password1"><br>
       </div>
 
       <div class="form-group">
-      <label for="password2"> password confirmation : </label>
-      <input type="password" id="password2" class="passConfirm" v-model="password2">
+      <label for="password2"></label>
+      <input type="password" id="password2" class="passConfirm" placeholder="PASSWORD CONFIRMATION" required v-model="password2">
       </div>
       
       <div class="CTA">
@@ -83,9 +83,12 @@ export default {
 }
 </script>
 <style scoped>
+.box{
+  margin: 50px 0px 0px 0px;
+}
 .signup-body {
   width: 100%;
-  height: 890px;
+  height: 838px;
   font-family: "Montserrat", sans-serif;
   background: #f7edd5;
 }
@@ -115,15 +118,15 @@ h1 {
 section#formHolder {
   padding: 50px 0;
   width: 850px;
-  /* height: 1200px; */
+  /* height: 500px; */
 
 
   
 }
 
 .brand {
-  /* width: 600px;
-  height: 700px; */
+  width: 420px;
+  height: 600px;
   padding: 20px;
   /* background: url(https://goo.gl/A0ynht); */
   background-size: cover;
@@ -228,7 +231,7 @@ section#formHolder {
 }
 .form .form-peice {
   background: #fff;
-  min-height: 480px;
+  min-height: 580px;
   margin-top: 30px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
   color: #bbbbbb;
@@ -255,7 +258,7 @@ section#formHolder {
   transform: translate(-50%, -50%);
 }
 .form form .form-group {
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   position: relative;
 }
 .form form .form-group.hasError input {
@@ -415,7 +418,7 @@ footer p a:hover, footer p a:focus:hover {
   width: 100%;
   /* height: 700px; */
   height: 100%;
-  opacity: 0.5;
+  opacity: 99;
   position: absolute;
   top: 20%;
   left: 50%;

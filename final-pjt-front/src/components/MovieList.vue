@@ -49,6 +49,7 @@
     .movie-list-page {
       font-family: 'Noto Sans KR', sans-serif
       text-light
+      
   
 
     }
@@ -66,6 +67,7 @@
     }
     .each-card-text{
       z-index: 1;
+      display:flex;
       justify-content: center !important;
     }
   </style>
