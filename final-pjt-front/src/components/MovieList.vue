@@ -49,6 +49,8 @@
     .movie-list-page {
       font-family: 'Noto Sans KR', sans-serif
       text-light
+  
+
     }
     
     .img-card{
@@ -56,6 +58,10 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
+      image-rendering: pixelated;
+      image-rendering: -webkit-optimize-contrast;
+      transform: translateZ(0);
+      backface-visibility: hidden;
 
     }
     .each-card-text{

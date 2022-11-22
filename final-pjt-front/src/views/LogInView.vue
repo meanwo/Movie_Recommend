@@ -2,10 +2,10 @@
   <div>
     <div class="wrap">
       <!-- <div class="random-img"></div> -->
-      <!-- <img src="@/assets/tumblr_mflsddIQER1rtrofoo1_500.gif" alt="" class="login-img"  id="movingPoster"> -->
+      <img src="@/assets/tumblr_mflsddIQER1rtrofoo1_500.gif" alt="" class="login-img"  id="movingPoster">
       <!-- <img src="@/assets/23053C4758A511D106.gif" alt="" class="login-img"  id="movingPoster"> -->
       <!-- <img v-for="name in images" :key="name.id" :src="require(`@/assets/images${name}`)" alt="" class="login-img"  > -->
-      <img id="movingPoster" border="0">
+      <!-- <img id="movingPoster" border="0"> -->
       <!-- class="login-img" -->
       <div class="form-wrap">
         <!-- <h1>LogIn Page</h1> -->
@@ -135,14 +135,16 @@ export default {
     width: 380px;
     height: 400px;
     position: relative;
-    margin: 15% auto;
+    margin: 10% auto;
     background: #fff;
+    /* background:oldlace; */
     padding: 10px;
     overflow: hidden;
     opacity: 0.8;
     justify-content: center;
     align-items: center;
-    animation: fadein 3s;
+    animation: fadein 2s;
+    z-index: 1;
 }
 @keyframes fadein {
   from {

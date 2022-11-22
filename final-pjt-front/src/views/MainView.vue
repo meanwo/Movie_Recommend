@@ -6,8 +6,9 @@
       v-for="movieCard in movieCards"
       :key="movieCard.id"
       :movieCard="movieCard"
-      class=".col-6 col-md-3 col-lg-2 m-3"
+      class=".col-6 col-md-3 col-lg-1 m-2 mb-3"
       />
+      <!-- class=".col-1 " -->
       <!-- class="col-2 m-3" -->
     
       <div class="mt-5">

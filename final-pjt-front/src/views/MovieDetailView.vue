@@ -31,7 +31,10 @@
   <GenreList v-for="(genre, index) in movieCard.genres" :key="index" :genre="genre"/>
   <button @click="ChangePage">back</button>
   </div>
-
+    <!-- <div class="container text-light"> -->
+      <CommentForm @create-comment="createComment" :movie-card="movieCard"/>
+      <CommentList :comments="comments" :movie-card="movieCard"/>
+    <!-- </div> -->
    </div> 
 
 
@@ -40,6 +43,8 @@
 <script>
 import axios from 'axios'
 import GenreList from '@/components/GenreList'
+import CommentForm from '@/components/CommentForm'
+import CommentList from '@/components/CommentList'
 
 // 유튜브 주소 + API_KEY
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
@@ -53,13 +58,16 @@ export default {
   name: 'MovieDetailView',
   components: {
     GenreList,
+    CommentForm,
+    CommentList,
   },
   data() {
     const base_url = 'https://image.tmdb.org/t/p/original'
     return {
       movieCard: '',
       trailer: [],
-      base_url
+      base_url,
+      comments: [],
     }
   },
   created() {
@@ -77,6 +85,22 @@ export default {
     }
   },
   methods: {
+    createComment(res) {
+      console.log(res)
+      this.comments.push(res.data)
+    },
+    getComments() { 
+        axios({
+          method: 'get',
+          url: `${API_URL}/api/v2/comments/list/${this.movieCard.id}/`
+          
+        })
+          .then((res) => {
+            // console.log(res)
+            this.comments = res.data;
+            console.log(this.comments)
+          })
+      },
     getMovieDetail() {
       axios({
         method: 'get',
@@ -86,6 +110,7 @@ export default {
           this.movieCard = res.data
           // console.log(this.movieCard)
           this.movieTrailer()
+          this.getComments()
 
         })
         .catch((err) => {
@@ -162,6 +187,7 @@ export default {
   /* animation: scaleImage 5s ease-out forwards; */
   animation: fadeout 0.5s;
   /* -webkit-animation: fadeout 4s; */
+  image-rendering: pixelated;
 }
 .detail-fade-in {
   animation: fadein cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -185,4 +211,5 @@ export default {
 .detail-page-txt{
   font-family: 'Noto Sans KR', sans-serif
 }
+
 </style>
