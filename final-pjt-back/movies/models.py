@@ -15,6 +15,7 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, related_name='movies')
 
 class Comment(models.Model):
+    spoiler = models.BooleanField(default=False)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()

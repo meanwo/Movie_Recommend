@@ -124,7 +124,7 @@ export default {
           this.movieCard = res.data;
           // console.log(this.movieCard)
           this.movieTrailer()
-          this.getComments();
+          this.getComments()
         })
         .catch((err) => {
           console.log(err);

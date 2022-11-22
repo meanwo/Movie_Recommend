@@ -1,6 +1,8 @@
 <template>
   <div>
+    <!-- {{comments}} -->
     <CommentListItem
+      @delete-comment="deleteComment"
       v-for="(comment, index) in comments"
       :key="index"
       :comment="comment"
@@ -20,11 +22,22 @@ export default {
     },
     props: {
       movieCard: Object,
-      comments: Object,
+      comments: Array,
     },
-
+    computed: {
+      nowComments() {
+        return this.comments
+      }
+    },
     methods: {
-  
+      deleteComment(id) {
+        const nowComments = this.nowComments
+        // console.log(nowComments)
+        const index = nowComments.findIndex(obj => obj.id == id)
+        // console.log(index)
+        // console.log(this.comments)
+        nowComments.splice(index, 1)  
+      }
     },
     // created() { 
     //   this.getComments()

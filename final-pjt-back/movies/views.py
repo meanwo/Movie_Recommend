@@ -38,6 +38,7 @@ def movie_detail(request, movie_pk):
 
 
 @api_view(['GET', 'DELETE', 'PUT'])
+@permission_classes([IsAuthenticated])
 def comment_detail(request, comment_pk):
     # comment = Comment.objects.get(pk=comment_pk)
     comment = get_object_or_404(Comment, pk=comment_pk)
