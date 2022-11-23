@@ -21,7 +21,7 @@ export default {
       CommentListItem,
     },
     props: {
-      movieCard: String,
+      movieCard: Object,
       comments: Array,
     },
     computed: {
@@ -64,12 +64,12 @@ export default {
   /* margin: 0px 0px 0px 410px; */
   display: block;
   width: 50%;
-  height: 100%
+  height: 100%;
   /* flex-direction: column; */
-  /* align-items: flex-start; */
+  /* align-items:center; */
   
-  
-  /* justify-content: flex-start; */
+  margin: 0 auto;
+  justify-content: center;
 
   /* align-items: start; */
 }

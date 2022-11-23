@@ -3,10 +3,11 @@
     <nav class="navbar bg-light home-nav">
 
       <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
+  
       <!-- <router-link :to="{ name: 'MainView', params: { id : 1} }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link> -->
-      <button @click="goToMain" class="text-line h3"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</button>
-      <div>
-      </div>
+      <div class="gotocenter">
+      <button @click="goToMain" class="text-line h3"><img src="@/assets/pat_mat.png" alt="" class="patmat ">Pat & Mat TV</button>
+      </div> 
       <!-- title="Menu"  -->
       <!-- :backdrop-variant="variant" -->
      
@@ -94,18 +95,34 @@ nav a.router-link-exact-active {
   /* width: 60px; */
   /* align-items: center; */
   /* justify-content: center; */
-  height: 30px;
-  position: sticky;
-  top: 0;
+  /* margin: 0; */
+  padding: 0;
+  overflow:hidden;
+  
+  /* height: 28px; */
+  position: fixed;
+  bottom: 50%;  /* 이게 위에서부터 어디까지 내려오는지 */
+  z-index: 99;
+
   /* padding: 0px 0px 3px 0px; */
 }
 .home-nav{
   /* position:sticky; */
 }
 .patmat{
-  display: block;
+  /* display:block; */
+  display:inline-block;
+  
+  /* float:left; */
   width: 35px;
   height: 35px;
   /* margin-left: 410px */
+}
+.gotocenter{
+  /* margin: auto; */     /* 패트매트 로고 아이콘을 가운데로 정렬하기 */
+  margin-left:43%;
+  /* text-align: center;
+  display:inline-block;
+  left: 50%; */
 }
 </style>
