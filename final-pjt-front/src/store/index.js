@@ -73,7 +73,7 @@ export default new Vuex.Store({
     loadMovieCards: function (context, num) {
       axios({
         method: 'get',
-        // url: `https://api.themoviedb.org/3/movie/popular`,
+        // url: `https://api.themoviedb.org/3/movie/original`,
         url: `${API_URL}/api/v2/movies/`,
         params: {
           api_key: API_KEY,
@@ -84,7 +84,7 @@ export default new Vuex.Store({
       .then((response) => {
         // console.log(response.data.slice((num-1)*10,(num-1)*10+10))
         // this.num = num
-        this.state.num = num
+        // this.state.num = num
         console.log(this.state.num)
         // console.log(this.num)
         

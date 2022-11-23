@@ -3,7 +3,8 @@
     <nav class="navbar bg-light home-nav">
 
       <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
-      <router-link :to="{ name: 'MainView', params: { id : 1} }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link>
+      <!-- <router-link :to="{ name: 'MainView', params: { id : 1} }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link> -->
+      <button @click="goToMain" class="text-line h3"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</button>
       <div>
       </div>
       <!-- title="Menu"  -->
@@ -13,7 +14,8 @@
       id="sidebar-backdrop"
       backdrop
       shadow>
-      <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link><p></p>
+      <!-- <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link><p></p> -->
+      <button @click="goToMain" class="text-line h3">Main</button>
       <div class="px-3 py-2">
         <p><router-link :to="{ name: 'GenreDetailView', params: { id: 28 } }" class="text-line">액션</router-link></p>
         <p><router-link :to="{ name: 'GenreDetailView', params: { id: 12 } }" class="text-line">모험</router-link></p>
@@ -55,10 +57,9 @@ export default {
     logOut() {
       this.$store.dispatch('logOut')
     },
-    toMain() {
-      //  this.$router.push({ name: 'MovieDetailView', params: {id: this.movieCard.id } })
-      this.$store.state.num = 1
-    }
+    goToMain() {
+      location.href=`http://localhost:8080/main/1`
+    },
   }
 }
 </script>
@@ -102,8 +103,9 @@ nav a.router-link-exact-active {
   /* position:sticky; */
 }
 .patmat{
+  display: block;
   width: 35px;
   height: 35px;
-  margin-left: 410px
+  /* margin-left: 410px */
 }
 </style>

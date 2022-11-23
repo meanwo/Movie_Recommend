@@ -49,12 +49,14 @@
           }
       },
       created: function() {
-        //   if (this.$store.state.num === null) {
+          if (this.$store.state.num === null) {
             this.$store.dispatch('loadTotalMovies')              
             this.$store.dispatch('loadMovieCards', 1)
-            // } else{
-            //       this.$router.push({ name : 'MainView' , params: { num : this.$store.state.num } })
-            // }
+            } else{
+              // goToMain()
+              this.$router.push({ name : 'MainView' , params: { num : this.$store.state.num } })
+
+            }
         },
 
       computed: {
@@ -94,13 +96,11 @@
               this.n1 = 494, this.n2 = 495, this.n3 = 496, this.n4 = 497
               this.n5 = 498, this.n6 = 499, this.n7 = 500
               this.$store.dispatch('loadMovieCards', 500)
-          }
-          
+          },
+          // goToMain() {
+          //     location.href=`http://localhost:8080/main/${}`
+          // },   
       }
-          
-              
-  
-      
   }
   </script>
   

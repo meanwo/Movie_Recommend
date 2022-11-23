@@ -190,7 +190,7 @@ export default {
   /* animation: scaleImage 5s ease-out forwards; */
   animation: fadeout 0.5s;
   /* -webkit-animation: fadeout 4s; */
-  image-rendering: pixelated;
+  /* image-rendering: pixelated; */
 }
 .detail-fade-in {
   animation: fadein cubic-bezier(0.55, 0.055, 0.675, 0.19);

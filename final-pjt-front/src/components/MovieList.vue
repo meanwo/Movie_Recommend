@@ -1,5 +1,5 @@
 <template>
-    <div class="card-group enlarge mb-5" style="width: 18rem; margin-left: 20px; margin-bottom: 20px" @click="goToDetail">
+    <div class="card-group enlarge mb-5" style="width: 18rem;  " @click="goToDetail">
       <!-- <router-link :to="{name: 'MovieDetailView', params: {id: movieCard.id }}"> -->
         <img  class="card-img-top img-card" :src="base_url+movieCard.poster_path" alt="영화이미지">
       <!-- </router-link> -->
@@ -10,7 +10,7 @@
       </div>
       
       <!-- {{ movieCard.id }} -->
-      <!-- {{ movieCard }} -->
+      <!-- {{ movieCard  margin-left: 20px; margin-bottom: 20px}} -->
 
     </div>
   </template>
@@ -57,11 +57,11 @@
     }
     
     .img-card{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      /* width: 100%; */
+      /* height: 100%; */
+      /* object-fit: cover; */
       z-index: 0;
-      image-rendering: pixelated;
+      /* image-rendering: pixelated; */
       image-rendering: -webkit-optimize-contrast;
       transform: translateZ(0);
       backface-visibility: hidden;
