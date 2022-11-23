@@ -1,8 +1,8 @@
 <template>
   <div>
     <input type="text" v-model.trim="comment" @keyup.enter="createComment" />
-
-    {{ movieCard.id }}
+    <toggle-button @change="isSpoiler()"/>
+    <div v-if="!spoiler"> 스포일러가 담긴 댓글을 작성하려면 클릭하세요! </div>
   </div>
 </template>
 
@@ -19,9 +19,14 @@ export default {
   data() {
     return {
       comment: null,
+      spoiler: false,
     };
   },
   methods: {
+    isSpoiler() {
+      this.spoiler = !this.spoiler
+      return this.spoiler
+    },
     createComment() {
       const comment = this.comment;
       if (!comment) {
@@ -33,6 +38,7 @@ export default {
         url: `${API_URL}/api/v2/movies/${this.movieCard.id}/comments/`,
         data: {
           content: comment,
+          spoiler: this.spoiler
         },
         headers: {
           Authorization: `Token ${this.$store.state.token}`,
@@ -41,6 +47,7 @@ export default {
         .then((res) => {
           console.log(res)
           this.$emit('create-comment', res)
+          // this.$emit('spoiler', this.spoiler)
         })
         .catch((err) => {
           console.log(err);
@@ -63,4 +70,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

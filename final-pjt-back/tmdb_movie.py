@@ -4,11 +4,11 @@ from pprint import pprint
 
 TMDB_API_KEY = 'd43c34da8b6513938295a31cd66258b2'
 
-def get_movie_datas2():
+def get_movie_datas():
     total_data = []
 
     # 1페이지부터 500페이지까지 (페이지당 20개, 총 10,000개)
-    for i in range(1, 2):
+    for i in range(1, 100):
         request_url = "https://api.themoviedb.org/3/movie/popular"
         params = {
             "api_key" : TMDB_API_KEY,

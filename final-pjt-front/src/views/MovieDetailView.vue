@@ -44,6 +44,7 @@
       <button @click="ChangePage">back</button>
     </div>
     
+    <RecommendList :movie-card="movieCard"/>
     <CommentForm @create-comment="createComment" :movie-card="movieCard"/>
     <CommentList :comments="comments" :movie-card="movieCard"/>
     
@@ -53,6 +54,7 @@
 <script>
 import axios from "axios";
 import GenreList from "@/components/GenreList"
+import RecommendList from "@/components/RecommendList"
 import CommentForm from '@/components/CommentForm'
 import CommentList from '@/components/CommentList'
 
@@ -70,6 +72,7 @@ export default {
     GenreList,
     CommentForm,
     CommentList,
+    RecommendList,
   },
   data() {
     const base_url = "https://image.tmdb.org/t/p/original";
@@ -124,7 +127,7 @@ export default {
           this.movieCard = res.data;
           // console.log(this.movieCard)
           this.movieTrailer()
-          this.getComments();
+          this.getComments()
         })
         .catch((err) => {
           console.log(err);
