@@ -44,7 +44,7 @@ const routes = [
   },
   {
     // path: '/main/:id',
-    path: '/main',
+    path: '/main/:id',
     name: 'MainView',
     component: MainView,
   },

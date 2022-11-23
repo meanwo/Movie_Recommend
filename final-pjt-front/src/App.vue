@@ -2,6 +2,10 @@
   <div id="app">
     <nav class="navbar bg-light">
       <b-button v-b-toggle.sidebar-backdrop class="moving-nav">≡</b-button>
+      <!-- <MainView :/> -->
+      <button @click="goToMain" class="text-line h3"><img src="@/assets/logo.png" alt="" class="patmat">Pat & Mat TV</button>
+
+
       <div>
       </div>
       <!-- title="Menu"  -->
@@ -12,7 +16,8 @@
       id="sidebar-backdrop"
       backdrop
       shadow>
-      <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link>
+      <!-- <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link> -->
+      <button @click="goToMain" class="text-line h3">Main</button>
       <div class="px-3 py-2">
         <p><router-link :to="{ name: 'GenreDetailView', params: { id: 28 } }" class="text-line">액션</router-link></p>
         <p><router-link :to="{ name: 'GenreDetailView', params: { id: 14 } }" class="text-line">판타지</router-link></p>
@@ -34,11 +39,20 @@
   <!-- <p>navbar navbar-expand-lg bg-light justify-content-center</p> -->
 </template>
 <script>
+  // import MainView from '@/views/Mainview'
+
 export default {
+  name: 'App',
+  // components: {
+  //   MainView
+  // },
   methods: {
     logOut() {
       this.$store.dispatch('logOut')
-    }
+    },
+    goToMain() {
+      this.$store.dispatch('loadMovieCards', 1)
+    },
   }
 }
 </script>

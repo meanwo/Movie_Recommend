@@ -23,7 +23,7 @@ export default new Vuex.Store({
     movieCards: [],
     totalMovies: [],
     token: null,
-    num: 1,
+    num: null,
   },
   getters: {
     isLogin(state) {
