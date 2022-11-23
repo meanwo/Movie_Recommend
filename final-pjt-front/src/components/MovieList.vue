@@ -1,11 +1,14 @@
 <template>
-    <div class="card-group enlarge" style="width: 18rem; margin-left: 20px; margin-bottom: 20px" @click="goToDetail">
+    <div class="card-group enlarge mb-5" style="width: 18rem; margin-left: 20px; margin-bottom: 20px" @click="goToDetail">
       <!-- <router-link :to="{name: 'MovieDetailView', params: {id: movieCard.id }}"> -->
         <img  class="card-img-top img-card" :src="base_url+movieCard.poster_path" alt="영화이미지">
       <!-- </router-link> -->
       <!-- <img :src="base_url+movieCard.poster_path" alt="영화이미지"> -->
       <!-- <h5 class="card-title font-weight-bold: 700">{{ movieCard.original_title }}</h5> -->
-      <h5 class="card-title font-weight-bold: 700 movie-list-page each-card-text text-light">{{ movieCard.title }}</h5>
+      <div class="card-title">
+        <h5 class=" font-weight-bold: 700 movie-list-page each-card-text text-light">{{ movieCard.title }}</h5>
+      </div>
+      
       <!-- {{ movieCard.id }} -->
       <!-- {{ movieCard }} -->
 
@@ -41,17 +44,16 @@
   }
   </script>
   
-  <style>
+  <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
     .enlarge:hover img{
       transform: scale(1.1,1.1);
     }
     .movie-list-page {
+      display: block;
+      text-align: center;
       font-family: 'Noto Sans KR', sans-serif
       text-light
-      
-  
-
     }
     
     .img-card{
@@ -67,7 +69,12 @@
     }
     .each-card-text{
       z-index: 1;
-      display:flex;
-      justify-content: center !important;
+      /* display:flex; */
+      /* text-align: center; */
+    }
+    .card-title{
+      display: flex;
+      text-align: center;
+      word-break: keep-all;   
     }
   </style>

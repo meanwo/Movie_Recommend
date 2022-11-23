@@ -49,9 +49,14 @@
           }
       },
       created: function() {
-          this.$store.dispatch('loadMovieCards', 1)
-          this.$store.dispatch('loadTotalMovies')
-      },
+        //   if (this.$store.state.num === null) {
+            this.$store.dispatch('loadTotalMovies')              
+            this.$store.dispatch('loadMovieCards', 1)
+            // } else{
+            //       this.$router.push({ name : 'MainView' , params: { num : this.$store.state.num } })
+            // }
+        },
+
       computed: {
           movieCards() {
               // console.log(this.$store.state.movieCards)

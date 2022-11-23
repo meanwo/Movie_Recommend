@@ -23,17 +23,18 @@
   <!-- <p>{{ movieCard?.poster_path }}</p> -->
   <h4>영화 제목 : {{ movieCard?.title }}</h4>
   <h4>평점: &emsp;{{ movieCard?.vote_avg }}</h4><br>
-  <h3>줄거리 : {{ movieCard?.overview }}</h3>
+  <h4 class="movie-overview">줄거리 : {{ movieCard?.overview }}</h4>
   <p>개봉일 : {{ movieCard?.released_date }}</p>
-  <p>장르 : {{ movieCard?.genres }}</p> -->
-    {{ movieCard?.id }}
+  <!-- <p>장르 : {{ movieCard?.genres }}</p> -->
+    <!-- {{ movieCard?.id }} -->
     <br>
   <GenreList v-for="(genre, index) in movieCard.genres" :key="index" :genre="genre"/>
-  <button @click="ChangePage">back</button>
-  </div>
+</div>
+<button @click="ChangePage" class="mb-3">back</button>
     <!-- <div class="container text-light"> -->
+      <RecommendList :movie-card="movieCard"/>
       <CommentForm @create-comment="createComment" :movie-card="movieCard"/>
-      <CommentList :comments="comments" :movie-card="movieCard"/>
+      <CommentList  :comments="comments" :movie-card="movieCard" class="comment-list"/>
     <!-- </div> -->
    </div> 
 
@@ -45,6 +46,7 @@ import axios from 'axios'
 import GenreList from '@/components/GenreList'
 import CommentForm from '@/components/CommentForm'
 import CommentList from '@/components/CommentList'
+import RecommendList from '@/components/RecommendList.vue'
 
 // 유튜브 주소 + API_KEY
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
@@ -60,6 +62,7 @@ export default {
     GenreList,
     CommentForm,
     CommentList,
+    RecommendList,
   },
   data() {
     const base_url = 'https://image.tmdb.org/t/p/original'
@@ -210,6 +213,22 @@ export default {
 }
 .detail-page-txt{
   font-family: 'Noto Sans KR', sans-serif
+}
+.movie-overview{
+  display: block;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+  text-align: left;
+  word-wrap:break-word;
+  display:-webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  word-spacing: 5px;
+}
+.comment-list{
+  display: block;
 }
 
 </style>

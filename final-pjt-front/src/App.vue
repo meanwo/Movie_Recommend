@@ -3,7 +3,7 @@
     <nav class="navbar bg-light home-nav">
 
       <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
-      <router-link :to="{ name: 'MainView' }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link>
+      <router-link :to="{ name: 'MainView', params: { id : 1} }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link>
       <div>
       </div>
       <!-- title="Menu"  -->
@@ -54,6 +54,10 @@ export default {
   methods: {
     logOut() {
       this.$store.dispatch('logOut')
+    },
+    toMain() {
+      //  this.$router.push({ name: 'MovieDetailView', params: {id: this.movieCard.id } })
+      this.$store.state.num = 1
     }
   }
 }
@@ -100,6 +104,6 @@ nav a.router-link-exact-active {
 .patmat{
   width: 35px;
   height: 35px;
-  margin-left: 360px
+  margin-left: 410px
 }
 </style>

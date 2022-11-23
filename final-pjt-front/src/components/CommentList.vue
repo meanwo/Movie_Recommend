@@ -61,10 +61,12 @@ export default {
 
 <style scoped>
 .comment-box {
-  margin: 0px 0px 0px 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  /* margin: 0px 0px 0px 410px; */
+  display: block;
+  width: 50%;
+  height: 100%
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
   
   
   /* justify-content: flex-start; */

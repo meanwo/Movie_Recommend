@@ -7,7 +7,7 @@
       <div class="row box">
         <div class="col-sm-6 brand"> 
           <img src="@/assets/j57xow5jgt.jpg" alt="" class="signup-img" >
-          <span>Pat & Mat</span>
+          <span class="welcome">Pat & Mat</span>
 
 
           <!-- <div class="success-msg">
@@ -428,5 +428,8 @@ footer p a:hover, footer p a:focus:hover {
   align-items: center;
   transform: translate(-50%, -20%);
   /* animation: fadeout 2s; */
+}
+.welcome{
+  z-index: 3
 }
 </style>

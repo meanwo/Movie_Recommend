@@ -1,8 +1,8 @@
 <template>
-  <div>
-   
-    <button @click="goToGenres"> {{ genre.name }} </button>
-
+  <div class="genre-list">
+    
+      <button @click="goToGenres"> {{ genre.name }} </button>
+    
   </div>
 </template>
 
@@ -27,6 +27,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.genre-list{
+  /* float:left; */
+  /* margin: 0px 1px 1px 50px; */
+  display: inline-block;
+  margin: 1px;
+}
 
 </style>

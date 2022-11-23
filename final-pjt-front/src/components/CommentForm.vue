@@ -1,8 +1,8 @@
 <template>
 <div class="mb-5">
 <div class="card bg-dark">
-  <div class="card-body">
   <div>
+  <div class="card-body">
     <form class="mb-4"><textarea class="form-control" rows="3"  v-model.trim="comment" @keyup.enter="createComment" placeholder="댓글을 작성해주세요.  "></textarea></form>
     <!-- <input type="text" v-model.trim="comment" @keyup.enter="createComment" /> -->
     <toggle-button @change="isSpoiler()"/>
@@ -77,8 +77,10 @@ export default {
 };
 </script>
 
-<style >
-/* .card {
+<style scoped>
+.card {
+  width: 56%;
+  margin: 0 auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -88,20 +90,24 @@ export default {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-} */
-/* .card-body {
+}
+.card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
-} */
-/* .form-control {
+  /* display:block; */
+  /* width:56%; */
+  /* margin: 0 auto;  */
+}
+.form-control {
   display: block;
-  width: 100%;
+  /* width: 56%; */
+  margin: 0 auto;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #212529;
+  background-color: #ced4da ;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   -webkit-appearance: none;
@@ -109,5 +115,5 @@ export default {
           appearance: none;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-} */
+}
 </style>
