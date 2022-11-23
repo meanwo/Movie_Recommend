@@ -8,7 +8,7 @@ def get_movie_datas():
     total_data = []
 
     # 1페이지부터 500페이지까지 (페이지당 20개, 총 10,000개)
-    for i in range(1, 25):
+    for i in range(1, 100):
         request_url = "https://api.themoviedb.org/3/movie/popular"
         params = {
             "api_key" : TMDB_API_KEY,
