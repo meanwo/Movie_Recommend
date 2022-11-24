@@ -10,19 +10,19 @@
 </template>
 
 <script>
-import ArticleListItem from '@/components/ArticleListItem'
+import ArticleListItem from "@/components/ArticleListItem";
 
 export default {
-  name: 'ArticleList',
+  name: "ArticleList",
   components: {
-    ArticleListItem
+    ArticleListItem,
   },
   computed: {
     articles() {
-      return this.$store.state.articles
-    }
-  }
-}
+      return this.$store.state.articles;
+    },
+  },
+};
 </script>
 
 <style>
