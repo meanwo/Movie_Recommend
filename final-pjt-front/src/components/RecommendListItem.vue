@@ -1,7 +1,7 @@
 <template>
 
     <div
-      class="card recommend-movies"
+      class="card recommend-movies enlarge"
       style="width: 18rem margin-left: 20px; margin-bottom: 20px"
       @click="goToDetail"
     >
@@ -53,5 +53,8 @@
 <style scoped>
 .recommend-movies{
   zoom: 90%;
+}
+.enlarge:hover img{
+  transform: scale(1.1,1.1);
 }
 </style>

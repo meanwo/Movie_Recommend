@@ -1,5 +1,5 @@
 <template>
-    <div class="row d-flex justify-content-center text-align-center p-3 mb-2 bg-dark main-page ">
+    <div class="row d-flex justify-content-center text-align-center p-3 mb-2 bg-black main-page ">
         <h1 class="text-light p-3 main-txt">Main</h1>
     
       <MovieList
