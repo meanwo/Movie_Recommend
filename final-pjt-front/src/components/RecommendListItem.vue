@@ -1,7 +1,6 @@
 <template>
-
   <div
-    class="card"
+    class="card recommend-movies enlarge"
     style="width: 18rem margin-left: 20px; margin-bottom: 20px"
     @click="goToDetail"
   >
@@ -24,8 +23,8 @@ export default {
       RecommendMovie: "",
     };
   },
-  created(){
-    this.getRecommendMovie()
+  created() {
+    this.getRecommendMovie();
   },
   props: {
     RecommendPk: Number,
@@ -44,10 +43,17 @@ export default {
         });
     },
     goToDetail() {
-        location.href=`http://localhost:8080/movies/${this.RecommendPk}`
-        }
+      location.href = `http://localhost:8080/movies/${this.RecommendPk}`;
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+.recommend-movies {
+  zoom: 90%;
+}
+.enlarge:hover img{
+  transform: scale(1.1,1.1);
+}
+</style>
