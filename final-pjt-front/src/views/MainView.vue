@@ -51,7 +51,7 @@
       },
       created: function() {
         // console.log(this.$store.state.num)
-        //   this.$store.dispatch('loadMovieCards', 1)
+          // this.$store.dispatch('loadMovieCards', 1)
           this.$store.dispatch('loadTotalMovies')
       },
     //   created: function() {
@@ -70,6 +70,11 @@
          
       },
       methods: {
+          // getMain() {
+          //   // alert('first')
+          //   this.$store.dispatch('loadMovieCards', 1)
+          //   this.$router.push({ name: 'MainView', params: {id: 1 } })
+          // },
           ChangePage(event) {
               const num = event.target.innerText
               this.$store.dispatch('loadMovieCards', num)

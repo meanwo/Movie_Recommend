@@ -28,7 +28,6 @@
       },
       methods: {
         goToDetail() {
-          console.log()
           this.$router.push({ name: 'MovieDetailView', params: {id: this.movieCard.id } })
         }
       },

@@ -45,11 +45,11 @@ export default new Vuex.Store({
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      router.push({ name: 'ArticleView' })
+      router.push({ name: 'MainView', params: {id: 1 } })
     },
-    GO_MAIN(state, token) {
+    GO_LOGIN(state, token) {
       state.token = token
-      router.push({ name: 'MainView' })
+      router.push({ name: 'LogInView' })
     },
   },
 
@@ -84,6 +84,8 @@ export default new Vuex.Store({
         }
       })
       .then((response) => {
+        // alert('second')
+
         // console.log(response.data.slice((num-1)*10,(num-1)*10+10))
         // this.num = num
         context.commit('LOAD_MOVIE_CARDS', response.data.slice((num-1)*24,(num-1)*24+24))
@@ -140,6 +142,11 @@ export default new Vuex.Store({
           console.log(res)
           context.commit('SAVE_TOKEN', res.data.key)
         })
+        .catch((err) => {
+          console.log(err)
+          alert('아이디 혹은 비밀번호가 다릅니다.')
+        })
+
     },
     logOut(context) {
       axios({
@@ -150,7 +157,7 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          context.commit('GO_MAIN')
+          context.commit('GO_LOGIN')
         })
     },
   },

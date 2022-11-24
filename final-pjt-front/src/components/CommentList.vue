@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- {{comments}} -->
+
     <CommentListItem
       @delete-comment="deleteComment"
       v-for="(comment, index) in comments"

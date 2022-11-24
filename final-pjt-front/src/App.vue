@@ -2,10 +2,10 @@
   <div id="app">
     <nav class="navbar bg-light">
       <b-button v-b-toggle.sidebar-backdrop class="moving-nav">≡</b-button>
-      <!-- <MainView :/> -->
+
+
       <button @click="goToMain" class="text-line h3"><img src="@/assets/logo.png" alt="" class="patmat">Pat & Mat TV</button>
-
-
+      
       <div>
       </div>
       <!-- title="Menu"  -->
@@ -39,19 +39,17 @@
   <!-- <p>navbar navbar-expand-lg bg-light justify-content-center</p> -->
 </template>
 <script>
-  // import MainView from '@/views/Mainview'
 
 export default {
   name: 'App',
-  // components: {
-  //   MainView
-  // },
+
   methods: {
     logOut() {
       this.$store.dispatch('logOut')
     },
     goToMain() {
       this.$store.dispatch('loadMovieCards', 1)
+      this.$router.push({ name: 'MainView', params: {id: 1 } })
     },
   }
 }

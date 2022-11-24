@@ -41,7 +41,7 @@
         :key="index"
         :genre="genre"
       />
-      <button @click="ChangePage">back</button>
+      <!-- <button @click="ChangePage">back</button> -->
     </div>
     
     <RecommendList :movie-card="movieCard"/>
@@ -77,7 +77,7 @@ export default {
   data() {
     const base_url = "https://image.tmdb.org/t/p/original";
     return {
-      movieCard: '',
+      movieCard: {},
       trailer: [],
       base_url,
       comments: [],
