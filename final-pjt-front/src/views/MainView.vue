@@ -1,5 +1,5 @@
 <template>
-    <div class="row d-flex justify-content-center p-3 mb-2 bg-dark ">
+    <div class="row d-flex justify-content-center text-align-center p-3 mb-2 bg-dark main-page ">
         <h1 class="text-light p-3 main-txt">Main</h1>
     
       <MovieList
@@ -11,7 +11,7 @@
       <!-- class=".col-1 " -->
       <!-- class="col-2 m-3" -->
     
-      <div class="mt-5">
+      <div class="mt-5 page-button">
           <button @click.self="FirstPage">&lt;&lt;</button>
           <button @click.self="FrontPage">&lt;</button>
           <button @click="ChangePage">{{ n1 }}</button>
@@ -49,14 +49,14 @@
           }
       },
       created: function() {
-          if (this.$store.state.num === null) {
-            this.$store.dispatch('loadTotalMovies')              
-            this.$store.dispatch('loadMovieCards', 1)
-            } else{
-              // goToMain()
-              this.$router.push({ name : 'MainView' , params: { num : this.$store.state.num } })
-
-            }
+          // if (this.$store.state.num === null) {
+          //   this.$store.dispatch('loadMovieCards', 1)
+          // } else{
+          //   // goToMain()
+          //   this.$router.push({ name : 'MainView' , params: { num : this.$store.state.num } })
+            
+          // }
+          this.$store.dispatch('loadTotalMovies')              
         },
 
       computed: {
@@ -108,5 +108,11 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
   .main-txt {
     font-family: 'Noto Sans KR', sans-serif
+  }
+  .main-page {
+    zoom: 90%;
+  }
+  .page-button{
+    zoom: 130%;
   }
   </style>

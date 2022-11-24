@@ -50,8 +50,8 @@ import RecommendList from '@/components/RecommendList.vue'
 
 // 유튜브 주소 + API_KEY
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
-// const YOUTUBE_API_KEY = 'AIzaSyCpoA4AXknB1SOqIn2S5wUbevdmMtOb22M'
-const YOUTUBE_API_KEY = ''
+const YOUTUBE_API_KEY = 'AIzaSyCpoA4AXknB1SOqIn2S5wUbevdmMtOb22M'
+// const YOUTUBE_API_KEY = ''
 
 const API_URL = 'http://127.0.0.1:8000'
 // const API_KEY = 'bdc7e9d7c737fde2202d73aceef9477b'
@@ -67,7 +67,7 @@ export default {
   data() {
     const base_url = 'https://image.tmdb.org/t/p/original'
     return {
-      movieCard: '',
+      movieCard: {},
       trailer: [],
       base_url,
       comments: [],
@@ -167,6 +167,9 @@ export default {
   /* width: 100%;
   height: 100%; */
   /* text-align: center; */
+  /* max-width: 80%; */
+  /* max-height: 80%; */
+  zoom: 90%;
   position: relative;
   z-index: 1;
   /* font-size: 1rem; */
@@ -212,10 +215,13 @@ export default {
   }
 }
 .detail-page-txt{
-  font-family: 'Noto Sans KR', sans-serif
+  font-family: 'Noto Sans KR', sans-serif;
+  display: block;
+  width: 1100px
+
 }
 .movie-overview{
-  display: block;
+  /* display: block; */
   overflow:hidden;
   text-overflow: ellipsis;
   white-space: normal;

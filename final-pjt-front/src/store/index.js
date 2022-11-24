@@ -22,6 +22,7 @@ export default new Vuex.Store({
     articles: [],
     movieCards: [],
     totalMovies: [],
+    // searchMovie: [],
     token: null,
     num: null,
   },
@@ -42,16 +43,22 @@ export default new Vuex.Store({
     GET_ARTICLES(state, articles) {
       state.articles = articles
     },
+    // SEARCH_MOVIE(state, searching) {
+    //   state.searchMovie = searching
+    //   router.push({ name: 'MovieDetailView', params : {} })
+    // },
+
     // 회원가입 && 로그인
     SAVE_TOKEN(state, token) {
       state.token = token
-      router.push({ name: 'ArticleView' })
+      router.push({ name: 'MainView', params: {id: 1 } })
     },
-    GO_MAIN(state, token) {
+    GO_LOGIN(state, token) {
       state.token = token
-      router.push({ name: 'MainView' })
+      router.push({ name: 'LogInView' })
     },
   },
+
   actions: {
    loadTotalMovies: function (context) {
     axios({
@@ -95,8 +102,19 @@ export default new Vuex.Store({
         // console.log(API_KEY)
         console.log(error)
       })
-      
     },
+    // searchMovie: function(context, searching) {
+    //   console.log(this.state.totalMovies)
+    //   // console.log('context임', context)
+    //   // console.log('searching임', searching)
+    //   if (searching in this.state.totalMovies.title) {
+    //     this.searchMovie = searching
+    //     console.log(this.serachMovie)
+    //     context.commit('SEARCH_MOVIE', searching)
+    //   } else {
+    //     alert('해당 영화가 존재하지 않습니다.')
+    //   }
+    // },
     getArticles(context) {
       axios({
         method: 'get',
@@ -140,7 +158,7 @@ export default new Vuex.Store({
       })
         .then((res) => {
           // console.log(res)
-          context.commit('GO_MAIN', res.data.key)
+          context.commit('SAVE_TOKEN', res.data.key)
         })
         .catch((err) => {
           console.log(err)
@@ -156,7 +174,7 @@ export default new Vuex.Store({
         }
       })
         .then(() => {
-          context.commit('GO_MAIN')
+          context.commit('GO_LOGIN')
         })
     },
   },

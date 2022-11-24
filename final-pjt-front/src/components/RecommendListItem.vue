@@ -1,7 +1,7 @@
 <template>
 
     <div
-      class="card"
+      class="card recommend-movies"
       style="width: 18rem margin-left: 20px; margin-bottom: 20px"
       @click="goToDetail"
     >
@@ -50,4 +50,8 @@
   };
   </script>
   
-  <style></style>
+<style scoped>
+.recommend-movies{
+  zoom: 90%;
+}
+</style>

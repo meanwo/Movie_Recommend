@@ -1,12 +1,12 @@
 <template>
-    <div class="card-group enlarge mb-5" style="width: 18rem;  " @click="goToDetail">
+    <div class="card-group enlarge mb-5" style="width: 18rem;  " @click="goToDetail" >
       <!-- <router-link :to="{name: 'MovieDetailView', params: {id: movieCard.id }}"> -->
         <img  class="card-img-top img-card" :src="base_url+movieCard.poster_path" alt="영화이미지">
       <!-- </router-link> -->
       <!-- <img :src="base_url+movieCard.poster_path" alt="영화이미지"> -->
       <!-- <h5 class="card-title font-weight-bold: 700">{{ movieCard.original_title }}</h5> -->
       <div class="card-title">
-        <h5 class=" font-weight-bold: 700 movie-list-page each-card-text text-light">{{ movieCard.title }}</h5>
+        <h5 class=" font-weight-bold: 700 movie-list-page each-card-text text-light mt-2">{{ movieCard.title }}</h5>
       </div>
       
       <!-- {{ movieCard.id }} -->
@@ -59,7 +59,7 @@
     .img-card{
       /* width: 100%; */
       /* height: 100%; */
-      /* object-fit: cover; */
+      object-fit: cover;
       z-index: 0;
       /* image-rendering: pixelated; */
       image-rendering: -webkit-optimize-contrast;
@@ -70,11 +70,17 @@
     .each-card-text{
       z-index: 1;
       /* display:flex; */
-      /* text-align: center; */
+      display: flex;
+      justify-content: center;
+      /* margin-left: auto; */
+      /* margin-right: auto; */
+      text-align: center;
     }
     .card-title{
       display: flex;
-      text-align: center;
+      /* display: inline; */
+      /* justify-content: center; */
+      /* text-align: center; */
       word-break: keep-all;   
     }
   </style>

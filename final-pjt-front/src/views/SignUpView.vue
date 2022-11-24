@@ -6,7 +6,7 @@
       
       <div class="row box">
         <div class="col-sm-6 brand"> 
-          <img src="@/assets/j57xow5jgt.jpg" alt="" class="signup-img" >
+          <img src="@/assets/23053C4758A511D106.gif" alt="" class="signup-img" >
           <span class="welcome">Pat & Mat</span>
 
 

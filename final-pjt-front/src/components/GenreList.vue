@@ -52,7 +52,7 @@ export default {
   /* float:left; */
   /* margin: 0px 1px 1px 50px; */
   display: inline-block;
-  margin: 3px;
+  margin: 5px;
 }
 html, body {
   height: 100%;
@@ -66,17 +66,17 @@ html, body {
 }
 
 .button {
-  width: 140px;
-  height: 45px;
+  width: 150px;
+  height: 55px;
   font-family: 'Roboto', sans-serif;
-  font-size: 11px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
   /* color: #000; */
   color: #fff;
   /* background-color: #fff; */
-  background-color: #000;
+  background-color: #505050;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);

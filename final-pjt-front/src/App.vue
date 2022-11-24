@@ -1,20 +1,24 @@
 <template>
   <div id="app">
-    <nav class="navbar bg-light home-nav">
+    <nav class="navbar bg-light home-nav home">
 
-      <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
+     
   
       <!-- <router-link :to="{ name: 'MainView', params: { id : 1} }"><img src="@/assets/pat_mat.png" alt="" class="patmat">Pat & Mat TV</router-link> -->
       <div class="gotocenter">
-      <button @click="goToMain" class="text-line h3"><img src="@/assets/pat_mat.png" alt="" class="patmat ">Pat & Mat TV</button>
+      <button @click="goToMain" class="text-line h3"><img src="@/assets/pat_mat.png" alt="" class="patmat ">Pat & Mat</button>
       </div> 
       <!-- title="Menu"  -->
       <!-- :backdrop-variant="variant" -->
-     
+      
+      <b-button v-b-toggle.sidebar-backdrop class="moving-nav">Menu</b-button>
       <b-sidebar 
       id="sidebar-backdrop"
       backdrop
-      shadow>
+      shadow
+      class="left-side-bar"
+
+      >
       <!-- <router-link :to="{ name: 'MainView' }" class="text-line h3">Main</router-link><p></p> -->
       <button @click="goToMain" class="text-line h3">Main</button>
       <div class="px-3 py-2">
@@ -44,7 +48,7 @@
       <div class="justify-content-flex-end">
         <!-- <router-link v-if="!this.$store.state.token" :to="{ name: 'SignUpView' }">  SignUpPage</router-link> | -->
         <router-link v-if="!this.$store.state.token" :to="{ name: 'LogInView' }">  LogInPage</router-link>
-        <router-link v-if="this.$store.state.token" :to="{ name: 'ArticleView' }">  Articles</router-link> |
+        <!-- <router-link v-if="this.$store.state.token" :to="{ name: 'ArticleView' }">  Articles</router-link> | -->
         <button v-if="this.$store.state.token" class="logoutButton" @click="logOut">Logout</button>
       </div>
     </nav>
@@ -59,13 +63,21 @@ export default {
       this.$store.dispatch('logOut')
     },
     goToMain() {
-      location.href=`http://localhost:8080/main/1`
+      this.$store.dispatch('loadMovieCards', 1)
+      this.$router.push({ name: 'MainView', params: {id: 1 } })
     },
   }
 }
 </script>
-<style>
-
+<style scoped>
+.home{
+  zoom: 70%;
+  /* position:relative; */
+  height: 80px
+}
+.left-side-bar{
+  zoom: 140%;
+}
 #app { /* 라우터 사이 | 색깔*/
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -98,10 +110,12 @@ nav a.router-link-exact-active {
   /* margin: 0; */
   padding: 0;
   overflow:hidden;
+  zoom: 150%;
   
   /* height: 28px; */
   position: fixed;
-  bottom: 50%;  /* 이게 위에서부터 어디까지 내려오는지 */
+  /* 이게 위에서부터 어디까지 내려오는지 */
+  bottom: 95%;  
   z-index: 99;
 
   /* padding: 0px 0px 3px 0px; */
@@ -119,8 +133,9 @@ nav a.router-link-exact-active {
   /* margin-left: 410px */
 }
 .gotocenter{
-  /* margin: auto; */     /* 패트매트 로고 아이콘을 가운데로 정렬하기 */
-  margin-left:43%;
+  /* 패트매트 로고 아이콘을 가운데로 정렬하기 */
+  margin: auto;    
+  margin-left:46.8%;
   /* text-align: center;
   display:inline-block;
   left: 50%; */

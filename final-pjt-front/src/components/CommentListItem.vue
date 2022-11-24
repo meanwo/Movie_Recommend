@@ -45,7 +45,7 @@
       <!-- </div> -->
       <!-- </div> -->
     </div>
- 
+    
 
   </div>
   </section>
@@ -74,7 +74,7 @@ export default {
     };
   },
   props: {
-    comment: String,
+    comment: Object,
   },
   methods: {
     deleteComment() {
